@@ -4,14 +4,19 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Calculadora Escolar Digital</title>
 
 <link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#1f4e79">
 
-<link rel="stylesheet" href="./estilo.css">
+<meta name="theme-color"
+content="#1f4e79">
+
+<link rel="stylesheet"
+href="./estilo.css">
 
 </head>
 
@@ -30,7 +35,7 @@ Nova média
 </button>
 
 <button onclick="mostrarSobre()">
-Sobre o app
+Sobre o aplicativo
 </button>
 
 </div>
@@ -38,7 +43,8 @@ Sobre o app
 
 <!-- APP PRINCIPAL -->
 
-<div id="appPrincipal" style="display:none;">
+<div id="appPrincipal"
+style="display:none;">
 
 
 <header id="headerApp">
@@ -62,17 +68,31 @@ Sistema automático de cálculo da média anual
 
 
 <label>Nome do aluno</label>
-<input id="nome" placeholder="Digite o nome">
+
+<input id="nome"
+placeholder="Digite o nome">
 
 
 <label>Segmento escolar</label>
 
-<select id="segmento" onchange="atualizarDisciplinas()">
+<select id="segmento"
+onchange="atualizarDisciplinas()">
 
-<option value="">Selecione</option>
-<option value="fund1">Ensino Fundamental I</option>
-<option value="fund2">Ensino Fundamental II</option>
-<option value="medio">Ensino Médio</option>
+<option value="">
+Selecione
+</option>
+
+<option value="fund1">
+Ensino Fundamental I
+</option>
+
+<option value="fund2">
+Ensino Fundamental II
+</option>
+
+<option value="medio">
+Ensino Médio
+</option>
 
 </select>
 
@@ -83,18 +103,22 @@ Sistema automático de cálculo da média anual
 
 
 <label>1º Bimestre</label>
+
 <input id="b1" type="number">
 
 
 <label>2º Bimestre</label>
+
 <input id="b2" type="number">
 
 
 <label>3º Bimestre</label>
+
 <input id="b3" type="number">
 
 
 <label>4º Bimestre</label>
+
 <input id="b4" type="number">
 
 
@@ -114,16 +138,22 @@ Sistema automático de cálculo da média anual
 <br><br>
 
 
-<button id="btnPDF" onclick="baixarRelatorio()">
+<button id="btnPDF"
+onclick="baixarRelatorio()">
+
 📥 Baixar Relatório
+
 </button>
 
 
 <br><br>
 
 
-<button id="btnInstalar" style="display:none;">
+<button id="btnInstalar"
+style="display:none;">
+
 📲 Instalar aplicativo
+
 </button>
 
 
