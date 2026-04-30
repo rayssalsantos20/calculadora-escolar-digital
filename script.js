@@ -269,9 +269,11 @@ btnPDF.disabled=true;
 
 function voltarMenu() {
 
-document.getElementById("appPrincipal").style.display = "none";
-
 document.getElementById("menuInicial").style.display = "block";
+
+document.getElementById("calculadora").style.display = "none";
+
+document.getElementById("sobre").style.display = "none";
 
 }
 });
