@@ -15,19 +15,50 @@ text-align:center;
 
 /* HEADER */
 
-#headerApp{
+#headerApp {
 
-font-size:28px;
+background: linear-gradient(90deg,#2fbf5b,#1f9e4d);
 
-font-weight:bold;
+color: white;
 
-color:white;
+font-size: 22px;
 
-padding:18px;
+font-weight: bold;
 
-letter-spacing:1px;
+text-align: center;
 
-background:linear-gradient(90deg,#16a34a,#22c55e);
+padding: 15px;
+
+position: relative;
+
+}
+.btnVoltar {
+
+position: absolute;
+
+left: 12px;
+
+top: 10px;
+
+background: white;
+
+border: none;
+
+font-size: 20px;
+
+padding: 6px 10px;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+transition: 0.2s;
+
+}
+
+.btnVoltar:hover {
+
+background: #e6f0ff;
 
 }
 
