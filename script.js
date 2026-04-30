@@ -293,9 +293,26 @@ document.getElementById("btnPDF").disabled=false;
 
 function baixarRelatorio(){
 
-let nomeAluno=document.getElementById("nome").value;
+let nomeAluno = document.getElementById("nome").value;
 
-if(nomeAluno===""){
+let segmento = document.getElementById("segmento").value;
+
+let disciplina = document.getElementById("disciplina").value;
+
+let b1 = document.getElementById("b1").value;
+
+let b2 = document.getElementById("b2").value;
+
+let b3 = document.getElementById("b3").value;
+
+let b4 = document.getElementById("b4").value;
+
+let textoResultado = document.getElementById("resultado").innerText;
+
+
+// validações
+
+if(nomeAluno === ""){
 
 alert("Digite o nome do aluno");
 
@@ -303,15 +320,77 @@ return;
 
 }
 
+if(disciplina === ""){
 
-let texto=resultado.innerText;
-
-
-if(texto===""){
-
-alert("Gere o relatório primeiro");
+alert("Selecione a disciplina");
 
 return;
+
+}
+
+
+// calcular média novamente para garantir
+
+let mediaFinal = "";
+
+if(b1 && b2 && b3 && b4){
+
+mediaFinal = ((Number(b1)+Number(b2)+Number(b3)+Number(b4))/4).toFixed(2);
+
+}
+
+
+const { jsPDF } = window.jspdf;
+
+let doc = new jsPDF();
+
+
+// título
+
+doc.setFontSize(16);
+
+doc.text("RELATÓRIO ESCOLAR DIGITAL",20,20);
+
+
+// dados aluno
+
+doc.setFontSize(12);
+
+doc.text("Aluno: "+nomeAluno,20,40);
+
+doc.text("Segmento: "+segmento,20,50);
+
+doc.text("Disciplina: "+disciplina,20,60);
+
+
+// notas
+
+doc.text("1º Bimestre: "+b1,20,80);
+
+doc.text("2º Bimestre: "+b2,20,90);
+
+doc.text("3º Bimestre: "+b3,20,100);
+
+doc.text("4º Bimestre: "+b4,20,110);
+
+
+// média
+
+if(mediaFinal !== ""){
+
+doc.text("Média Final: "+mediaFinal,20,130);
+
+}
+
+
+// situação
+
+doc.text(textoResultado,20,150);
+
+
+// salvar arquivo
+
+doc.save("relatorio-"+nomeAluno+".pdf");
 
 }
 
