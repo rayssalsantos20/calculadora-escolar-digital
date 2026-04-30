@@ -1,140 +1,281 @@
 body{
-font-family:'Segoe UI',Arial;
-background:#eef2f7;
+
+font-family:Arial, sans-serif;
+
 margin:0;
+
+background:#eef2f7;
+
 text-align:center;
+
 }
 
-.header{
-background:linear-gradient(90deg,#1f4e79,#2e75b6);
-color:white;
-padding:25px;
-font-size:28px;
+
+/* HEADER */
+
+#headerApp{
+
+font-size:26px;
+
 font-weight:bold;
+
+text-align:center;
+
+color:white;
+
+padding:14px;
+
+letter-spacing:1px;
+
+background:linear-gradient(90deg,#1f4e79,#2e75b6);
+
 }
 
-.sub{
-margin:12px;
+
+/* SUBTÍTULO */
+
+.subtitulo{
+
+margin-top:8px;
+
+font-size:15px;
+
+color:#444;
+
+}
+
+
+/* DATA */
+
+#dataAtual{
+
+font-size:14px;
+
 color:#555;
+
+margin-bottom:10px;
+
 }
 
-.container{
+
+/* CARD PRINCIPAL */
+
+.card{
+
 background:white;
-width:360px;
-margin:40px auto;
-padding:30px;
-border-radius:18px;
-box-shadow:0px 6px 18px rgba(0,0,0,0.12);
+
+width:320px;
+
+margin:auto;
+
+padding:25px;
+
+border-radius:14px;
+
+box-shadow:0px 4px 14px rgba(0,0,0,0.08);
+
 }
 
-label{
-display:block;
-margin-top:10px;
-font-weight:600;
-color:#1f4e79;
-}
 
-input,select{
-width:200px;
+/* CAMPOS */
+
+input, select{
+
+width:85%;
+
 padding:8px;
-margin-top:6px;
-border-radius:8px;
-border:1px solid #ccd6e0;
+
+margin:6px;
+
+border-radius:6px;
+
+border:1px solid #ccc;
+
+font-size:14px;
+
 }
+
+
+/* BOTÕES */
 
 button{
-margin:12px 6px;
-padding:10px 18px;
-border-radius:8px;
-border:none;
+
 background:#2e75b6;
+
 color:white;
-font-size:15px;
+
+border:none;
+
+padding:10px 16px;
+
+margin:6px;
+
+border-radius:8px;
+
 cursor:pointer;
+
+font-size:14px;
+
+transition:0.2s;
+
 }
 
+
 button:hover{
+
 background:#1f4e79;
+
+}
+
+
+/* BOTÃO PDF */
+
+#btnPDF{
+
+background:#3b82f6;
+
+}
+
+
+/* BOTÃO INSTALAR */
+
+#btnInstalar{
+
+background:#16a34a;
+
+}
+
+
+#btnInstalar:hover{
+
+background:#15803d;
+
+}
+
+
+/* RESULTADO */
+
+#resultado{
+
+background:#f1f5f9;
+
+padding:20px;
+
+margin:18px auto;
+
+width:320px;
+
+border-radius:12px;
+
+font-size:15px;
+
+}
+
+
+/* BARRA DE PROGRESSO */
+
+.barra-container{
+
+width:320px;
+
+height:12px;
+
+background:#e5e7eb;
+
+margin:15px auto;
+
+border-radius:8px;
+
+overflow:hidden;
+
+}
+
+
+#barra{
+
+height:12px;
+
+width:0%;
+
+background:#22c55e;
+
+transition:width 0.6s ease;
+
+}
+
+
+/* MENU INICIAL */
+
+.menu{
+
+margin-top:80px;
+
+}
+
+
+.menu h2{
+
+font-size:28px;
+
+color:#1f4e79;
+
+margin-bottom:25px;
+
+}
+
+
+.menu button{
+
+display:block;
+
+margin:12px auto;
+
+width:220px;
+
+font-size:16px;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+margin-top:25px;
+
+font-size:13px;
+
+color:#555;
+
+}
+
+
+/* RESPONSIVO CELULAR */
+
+@media(max-width:480px){
+
+.card{
+
+width:90%;
+
 }
 
 #resultado{
-margin-top:25px;
-padding:15px;
-border-radius:12px;
-background:#f5f8fc;
+
+width:90%;
+
 }
 
 .barra-container{
-width:100%;
-height:12px;
-background:#dbe3ec;
-border-radius:8px;
-margin-top:10px;
+
+width:90%;
+
 }
 
-#barra{
-height:10px;
-width:0%;
-border-radius:10px;
-transition:0.4s;
-}
-.headerFund1{
-background: linear-gradient(90deg,#4a90e2,#6bbcff);
-}
+.menu h2{
 
-.headerFund2{
-background: linear-gradient(90deg,#2ecc71,#58d68d);
-}
+font-size:24px;
 
-.headerMedio{
-background: linear-gradient(90deg,#8e44ad,#af7ac5);
 }
-.data-app{
-font-size:14px;
-color:#6b7280;
-margin-bottom:10px;
-text-align:left;
-width:100%;
-max-width:420px;
-margin-left:auto;
-margin-right:auto;
-}
-.mensagem-desempenho{
-font-weight:600;
-margin-top:10px;
-font-size:15px;
-}
-button:hover{
-transform:scale(1.03);
-}
-.rodape{
-margin-top:40px;
-font-size:12px;
-color:#6b7280;
-text-align:center;
-opacity:0.8;
-}
-button{
-transition:0.2s ease;
-}
-
-button:hover{
-transform:scale(1.03);
-}
-
-button:active{
-transform:scale(0.97);
-}
-button:hover{
-transform:scale(1.03);
-box-shadow:0 6px 18px rgba(0,0,0,0.15);
-}
-#barra{
-
-height:10px;
-width:0%;
-border-radius:10px;
-
-transition: width 0.8s ease, background 0.5s ease;
 
 }
