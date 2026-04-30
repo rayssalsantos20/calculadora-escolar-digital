@@ -267,4 +267,11 @@ disciplinaSelect.disabled=true;
 
 btnPDF.disabled=true;
 
+function voltarMenu() {
+
+document.getElementById("appPrincipal").style.display = "none";
+
+document.getElementById("menuInicial").style.display = "block";
+
+}
 });
