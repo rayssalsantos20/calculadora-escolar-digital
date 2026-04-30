@@ -1,228 +1,23 @@
-function mostrarDataAtual(){
+// =============================
+// MENU / NAVEGAÇÃO
+// =============================
 
-let hoje=new Date();
+function abrirCalculadora() {
 
-let dia=String(hoje.getDate()).padStart(2,"0");
-let mes=String(hoje.getMonth()+1).padStart(2,"0");
-let ano=hoje.getFullYear();
+document.getElementById("menuInicial").style.display="none";
+document.getElementById("appPrincipal").style.display="block";
 
-dataAtual.innerText="Data: "+dia+"/"+mes+"/"+ano;
-
-}
-
-
-
-function atualizarHeaderSegmento(){
-
-let segmento=segmentoSelect.value;
-
-
-if(segmento==="fund1"){
-
-headerApp.style.background="linear-gradient(90deg,#16a34a,#22c55e)";
-iconeSegmento.innerHTML="📘";
-
-}
-
-else if(segmento==="fund2"){
-
-headerApp.style.background="linear-gradient(90deg,#f59e0b,#fbbf24)";
-iconeSegmento.innerHTML="📗";
-
-}
-
-else if(segmento==="medio"){
-
-headerApp.style.background="linear-gradient(90deg,#2563eb,#60a5fa)";
-iconeSegmento.innerHTML="🎓";
-
-}
-
-else{
-
-headerApp.style.background="linear-gradient(90deg,#1f4e79,#2e75b6)";
-iconeSegmento.innerHTML="🧮";
-
-}
+limparCampos();
 
 }
 
 
-
-const segmentoSelect=document.getElementById("segmento");
-const disciplinaSelect=document.getElementById("disciplina");
-
-
-
-function atualizarDisciplinas(){
-
-let segmento=segmentoSelect.value;
-
-disciplinaSelect.innerHTML="<option value=''>Selecione</option>";
-
-atualizarHeaderSegmento();
-
-
-if(segmento===""){
-
-disciplinaSelect.disabled=true;
-return;
-
-}
-
-disciplinaSelect.disabled=false;
-
-
-let lista=[];
-
-
-if(segmento==="fund1"){
-
-lista=["Português","Matemática","Ciências","História"];
-
-}
-
-
-else if(segmento==="fund2"){
-
-lista=["Português","Matemática","Ciências","História","Geografia","Espanhol"];
-
-}
-
-
-else{
-
-lista=["Português","Matemática","Física","Química","Biologia"];
-
-}
-
-
-lista.forEach(materia=>{
-
-let option=document.createElement("option");
-
-option.text=materia;
-
-disciplinaSelect.add(option);
-
-});
-
-}
-
-
-
-function simularMedia(){
-
-let disciplina=disciplinaSelect.value;
-
-if(disciplina==="") return;
-
-
-let n1=parseFloat(b1.value)||0;
-let n2=parseFloat(b2.value)||0;
-let n3=parseFloat(b3.value)||0;
-let n4=parseFloat(b4.value)||0;
-
-
-let media=(n1+n2+n3+n4)/4;
-
-
-let status="";
-let cor="";
-
-
-if(media>=6){
-
-status="🟢 APROVADO";
-cor="#22c55e";
-
-}
-
-else{
-
-status="🔴 RECUPERAÇÃO FINAL";
-cor="#ef4444";
-
-}
-
-
-resultado.innerHTML=
-
-"Aluno: "+nome.value+
-
-"<br><br>Segmento: "+segmento.options[segmento.selectedIndex].text+
-
-"<br><br>Disciplina: "+disciplina+
-
-"<br><br>Média final: "+media.toFixed(2)+
-
-"<br><br><b>"+status+"</b>";
-
-
-barra.style.width=(media*10)+"%";
-
-barra.style.background=cor;
-
-}
-
-
-
-function gerarRelatorio(){
-
-simularMedia();
-
-btnPDF.disabled=false;
-
-}
-
-
-
-function limparCampos(){
-
-document.getElementById("menuInicial").style.display="block";
+function voltarMenu(){
 
 document.getElementById("appPrincipal").style.display="none";
+document.getElementById("menuInicial").style.display="block";
 
 }
-
-
-
-function baixarRelatorio(){
-
-let nomeAluno=nome.value;
-
-
-if(nomeAluno===""){
-
-alert("Digite o nome do aluno");
-
-return;
-
-}
-
-
-const { jsPDF } = window.jspdf;
-
-let doc=new jsPDF();
-
-doc.text(resultado.innerText,20,20);
-
-doc.save("relatorio-"+nomeAluno+".pdf");
-
-}
-
-
-
-function abrirCalculadora(){
-
-menuInicial.style.display="none";
-
-appPrincipal.style.display="block";
-
-mostrarDataAtual();
-
-}
-
 
 
 function mostrarSobre(){
@@ -233,8 +28,313 @@ alert("Aplicativo desenvolvido por Rayssa Santos 📚");
 
 
 
-let deferredPrompt;
+// =============================
+// LIMPAR CAMPOS
+// =============================
 
+function limparCampos(){
+
+document.getElementById("nome").value="";
+
+document.getElementById("segmento").value="";
+
+document.getElementById("disciplina").innerHTML=
+"<option value=''>Selecione</option>";
+
+document.getElementById("b1").value="";
+document.getElementById("b2").value="";
+document.getElementById("b3").value="";
+document.getElementById("b4").value="";
+
+document.getElementById("resultado").innerHTML="";
+
+document.getElementById("barra").style.width="0%";
+
+document.getElementById("btnPDF").disabled=true;
+
+}
+
+
+
+// =============================
+// DISCIPLINAS POR SEGMENTO
+// =============================
+
+function atualizarDisciplinas(){
+
+let segmento=document.getElementById("segmento").value;
+
+let disciplina=document.getElementById("disciplina");
+
+disciplina.innerHTML="<option value=''>Selecione</option>";
+
+
+if(segmento==="fund1"){
+
+let lista=[
+"Língua Portuguesa",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Arte",
+"Educação Física",
+"Cultura Maker",
+"Xadrez",
+"Música",
+"Língua Inglesa"
+];
+
+lista.forEach(materia=>{
+let option=document.createElement("option");
+option.text=materia;
+disciplina.add(option);
+});
+
+}
+
+
+else if(segmento==="fund2"){
+
+let lista=[
+"Língua Portuguesa",
+"Matemática",
+"Ciências",
+"História",
+"Geografia",
+"Inglês",
+"Arte",
+"Educação Física",
+"Língua Espanhola",
+"Música",
+"Cultura Maker"
+];
+
+lista.forEach(materia=>{
+let option=document.createElement("option");
+option.text=materia;
+disciplina.add(option);
+});
+
+}
+
+
+else if(segmento==="medio"){
+
+let lista=[
+"Língua Portuguesa",
+"Matemática",
+"Física",
+"Química",
+"Biologia",
+"História",
+"Geografia",
+"Língua Inglesa",
+"Filosofia",
+"Sociologia",
+"Redação",
+"Literatura",
+"Língua Espanhola",
+"Arte",
+"Educação Física",
+"Música"
+];
+
+lista.forEach(materia=>{
+let option=document.createElement("option");
+option.text=materia;
+disciplina.add(option);
+});
+
+}
+
+}
+
+
+
+// =============================
+// CÁLCULO AUTOMÁTICO
+// =============================
+
+document.addEventListener("DOMContentLoaded",function(){
+
+document.getElementById("b1").addEventListener("input",simularMedia);
+document.getElementById("b2").addEventListener("input",simularMedia);
+document.getElementById("b3").addEventListener("input",simularMedia);
+document.getElementById("b4").addEventListener("input",simularMedia);
+
+document.getElementById("disciplina").addEventListener("change",simularMedia);
+
+});
+
+
+
+// =============================
+// FUNÇÃO MÉDIA
+// =============================
+
+function simularMedia(){
+
+let disciplina=document.getElementById("disciplina").value;
+
+if(disciplina==="") return;
+
+
+let n1=parseFloat(b1.value);
+let n2=parseFloat(b2.value);
+let n3=parseFloat(b3.value);
+let n4=parseFloat(b4.value);
+
+
+let resultado=document.getElementById("resultado");
+
+let barra=document.getElementById("barra");
+
+let mediaMinima=6;
+
+
+if(isNaN(n1)||isNaN(n2)||isNaN(n3)){
+
+resultado.innerHTML="";
+barra.style.width="0%";
+
+return;
+
+}
+
+
+let soma3=n1+n2+n3;
+
+let mediaParcial=soma3/3;
+
+
+
+// SEM 4º BIMESTRE
+
+if(isNaN(n4)){
+
+let notaNecessaria=(mediaMinima*4-soma3);
+
+if(notaNecessaria<0) notaNecessaria=0;
+
+
+let progresso=(mediaParcial/mediaMinima)*100;
+
+if(progresso>100) progresso=100;
+
+
+barra.style.width=progresso+"%";
+
+
+resultado.innerHTML=
+
+"Disciplina: "+disciplina+
+
+"<br><br>Média parcial: "+mediaParcial.toFixed(2)+
+
+"<br><br>Precisa tirar "+notaNecessaria.toFixed(2)+" no 4º bimestre";
+
+
+return;
+
+}
+
+
+
+// COM 4º BIMESTRE
+
+let somaTotal=soma3+n4;
+
+let mediaFinal=somaTotal/4;
+
+let progresso=(mediaFinal/mediaMinima)*100;
+
+if(progresso>100) progresso=100;
+
+
+barra.style.width=progresso+"%";
+
+
+if(mediaFinal>=6){
+
+resultado.innerHTML=
+
+"Disciplina: "+disciplina+
+
+"<br><br>Média final: "+mediaFinal.toFixed(2)+
+
+"<br><br>🟢 ATINGIU A MÉDIA";
+
+}
+
+
+else{
+
+resultado.innerHTML=
+
+"Disciplina: "+disciplina+
+
+"<br><br>Média final: "+mediaFinal.toFixed(2)+
+
+"<br><br>🔴 RECUPERAÇÃO FINAL";
+
+}
+
+
+document.getElementById("btnPDF").disabled=false;
+
+}
+
+
+
+// =============================
+// PDF
+// =============================
+
+function baixarRelatorio(){
+
+let nomeAluno=document.getElementById("nome").value;
+
+if(nomeAluno===""){
+
+alert("Digite o nome do aluno");
+
+return;
+
+}
+
+
+let texto=resultado.innerText;
+
+
+if(texto===""){
+
+alert("Gere o relatório primeiro");
+
+return;
+
+}
+
+
+const { jsPDF }=window.jspdf;
+
+let doc=new jsPDF();
+
+doc.text("RELATÓRIO ESCOLAR DIGITAL",20,20);
+
+doc.text(texto,20,40);
+
+doc.save("relatorio-"+nomeAluno+".pdf");
+
+}
+
+
+
+// =============================
+// BOTÃO INSTALAR APP
+// =============================
+
+let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt",(e)=>{
 
@@ -242,12 +342,12 @@ e.preventDefault();
 
 deferredPrompt=e;
 
-btnInstalar.style.display="block";
+document.getElementById("btnInstalar").style.display="block";
 
 });
 
 
-btnInstalar.addEventListener("click",async()=>{
+document.getElementById("btnInstalar").addEventListener("click",async()=>{
 
 if(deferredPrompt){
 
@@ -257,23 +357,4 @@ deferredPrompt=null;
 
 }
 
-});
-
-
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-disciplinaSelect.disabled=true;
-
-btnPDF.disabled=true;
-
-function voltarMenu() {
-
-document.getElementById("menuInicial").style.display = "block";
-
-document.getElementById("calculadora").style.display = "none";
-
-document.getElementById("sobre").style.display = "none";
-
-}
 });
