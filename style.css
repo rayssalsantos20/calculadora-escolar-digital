@@ -1,10 +1,12 @@
-body{
+/* RESET */
 
-font-family:Arial, sans-serif;
+body{
 
 margin:0;
 
-background:#eef2f7;
+font-family:Arial, sans-serif;
+
+background:#dfe5ec;
 
 text-align:center;
 
@@ -15,32 +17,30 @@ text-align:center;
 
 #headerApp{
 
-font-size:26px;
+font-size:28px;
 
 font-weight:bold;
 
-text-align:center;
-
 color:white;
 
-padding:14px;
+padding:18px;
 
 letter-spacing:1px;
 
-background:linear-gradient(90deg,#1f4e79,#2e75b6);
+background:linear-gradient(90deg,#16a34a,#22c55e);
 
 }
 
 
-/* SUBTÍTULO */
+/* SUBTITULO */
 
 .subtitulo{
 
-margin-top:8px;
+margin-top:12px;
 
-font-size:15px;
+font-size:16px;
 
-color:#444;
+color:#333;
 
 }
 
@@ -53,7 +53,7 @@ font-size:14px;
 
 color:#555;
 
-margin-bottom:10px;
+margin-bottom:15px;
 
 }
 
@@ -64,34 +64,34 @@ margin-bottom:10px;
 
 background:white;
 
-width:320px;
+width:360px;
 
-margin:auto;
+margin:30px auto;
 
-padding:25px;
+padding:30px;
 
-border-radius:14px;
+border-radius:18px;
 
-box-shadow:0px 4px 14px rgba(0,0,0,0.08);
+box-shadow:0px 8px 20px rgba(0,0,0,0.12);
 
 }
 
 
-/* CAMPOS */
+/* INPUTS */
 
 input, select{
 
-width:85%;
+width:90%;
 
-padding:8px;
+padding:10px;
 
-margin:6px;
+margin:8px;
 
-border-radius:6px;
+border-radius:8px;
 
 border:1px solid #ccc;
 
-font-size:14px;
+font-size:15px;
 
 }
 
@@ -106,15 +106,15 @@ color:white;
 
 border:none;
 
-padding:10px 16px;
+padding:12px 18px;
 
-margin:6px;
+margin:8px;
 
-border-radius:8px;
+border-radius:10px;
 
 cursor:pointer;
 
-font-size:14px;
+font-size:15px;
 
 transition:0.2s;
 
@@ -157,34 +157,34 @@ background:#15803d;
 
 #resultado{
 
-background:#f1f5f9;
+background:#e9eef5;
 
-padding:20px;
+padding:22px;
 
-margin:18px auto;
+margin:25px auto;
 
-width:320px;
+width:360px;
 
-border-radius:12px;
+border-radius:14px;
 
-font-size:15px;
+font-size:16px;
 
 }
 
 
-/* BARRA DE PROGRESSO */
+/* BARRA PROGRESSO */
 
 .barra-container{
 
-width:320px;
+width:360px;
 
-height:12px;
+height:14px;
 
-background:#e5e7eb;
+background:#cfd6de;
 
-margin:15px auto;
+margin:18px auto;
 
-border-radius:8px;
+border-radius:10px;
 
 overflow:hidden;
 
@@ -193,13 +193,13 @@ overflow:hidden;
 
 #barra{
 
-height:12px;
+height:14px;
 
 width:0%;
 
 background:#22c55e;
 
-transition:width 0.6s ease;
+transition:width 0.8s ease;
 
 }
 
@@ -208,18 +208,18 @@ transition:width 0.6s ease;
 
 .menu{
 
-margin-top:80px;
+margin-top:120px;
 
 }
 
 
 .menu h2{
 
-font-size:28px;
+font-size:32px;
 
 color:#1f4e79;
 
-margin-bottom:25px;
+margin-bottom:30px;
 
 }
 
@@ -228,11 +228,11 @@ margin-bottom:25px;
 
 display:block;
 
-margin:12px auto;
+margin:14px auto;
 
-width:220px;
+width:240px;
 
-font-size:16px;
+font-size:18px;
 
 }
 
@@ -241,9 +241,9 @@ font-size:16px;
 
 footer{
 
-margin-top:25px;
+margin-top:35px;
 
-font-size:13px;
+font-size:14px;
 
 color:#555;
 
@@ -256,25 +256,27 @@ color:#555;
 
 .card{
 
-width:90%;
+width:92%;
+
+padding:22px;
 
 }
 
 #resultado{
 
-width:90%;
+width:92%;
 
 }
 
 .barra-container{
 
-width:90%;
+width:92%;
 
 }
 
 .menu h2{
 
-font-size:24px;
+font-size:26px;
 
 }
 
