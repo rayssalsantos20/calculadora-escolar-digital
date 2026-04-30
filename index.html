@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,11 +11,35 @@
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#1f4e79">
 
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./estilo.css">
 
 </head>
 
+
 <body>
+
+
+<!-- MENU INICIAL -->
+
+<div id="menuInicial" class="menu">
+
+<h2>📊 Calculadora Escolar Digital</h2>
+
+<button onclick="abrirCalculadora()">
+Nova média
+</button>
+
+<button onclick="mostrarSobre()">
+Sobre o app
+</button>
+
+</div>
+
+
+<!-- APP PRINCIPAL -->
+
+<div id="appPrincipal" style="display:none;">
+
 
 <header id="headerApp">
 
@@ -24,59 +49,89 @@ CALCULADORA ESCOLAR DIGITAL
 
 </header>
 
+
 <p class="subtitulo">
 Sistema automático de cálculo da média anual
 </p>
 
+
 <p id="dataAtual"></p>
 
+
 <div class="card">
+
 
 <label>Nome do aluno</label>
 <input id="nome" placeholder="Digite o nome">
 
+
 <label>Segmento escolar</label>
+
 <select id="segmento" onchange="atualizarDisciplinas()">
+
 <option value="">Selecione</option>
 <option value="fund1">Ensino Fundamental I</option>
 <option value="fund2">Ensino Fundamental II</option>
 <option value="medio">Ensino Médio</option>
+
 </select>
 
+
 <label>Disciplina</label>
+
 <select id="disciplina"></select>
+
 
 <label>1º Bimestre</label>
 <input id="b1" type="number">
 
+
 <label>2º Bimestre</label>
 <input id="b2" type="number">
+
 
 <label>3º Bimestre</label>
 <input id="b3" type="number">
 
+
 <label>4º Bimestre</label>
 <input id="b4" type="number">
 
+
 <br>
+
 
 <button onclick="gerarRelatorio()">
 📊 Gerar Relatório
 </button>
 
+
 <button onclick="limparCampos()">
 🧹 Limpar
 </button>
 
+
 <br><br>
+
 
 <button id="btnPDF" onclick="baixarRelatorio()">
 📥 Baixar Relatório
 </button>
 
+
+<br><br>
+
+
+<button id="btnInstalar" style="display:none;">
+📲 Instalar aplicativo
+</button>
+
+
 </div>
 
+
 <div id="resultado"></div>
+
 
 <div class="barra-container">
 
@@ -84,11 +139,15 @@ Sistema automático de cálculo da média anual
 
 </div>
 
+
 <footer>
 
 Desenvolvido por Rayssa Santos
 
 </footer>
+
+
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -108,4 +167,5 @@ navigator.serviceWorker.register("./service-worker.js");
 
 
 </body>
+
 </html>
