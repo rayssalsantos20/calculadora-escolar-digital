@@ -463,3 +463,14 @@ b2.addEventListener("input", () => simularMedia(false))
 b3.addEventListener("input", () => simularMedia(false))
 
 b4.addEventListener("input", () => simularMedia(false))
+// TELA DE CARREGAMENTO
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document.getElementById("loading").style.display = "none"
+
+    }, 3000)
+
+})
