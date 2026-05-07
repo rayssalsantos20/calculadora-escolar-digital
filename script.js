@@ -17,6 +17,10 @@ const resultado = document.getElementById("resultado")
 const barra = document.getElementById("barra")
 
 const btnPDF = document.getElementById("btnPDF")
+let relatorioGerado = false
+
+
+// CONTROLE PDF
 
 let relatorioGerado = false
 
@@ -50,7 +54,45 @@ function voltarMenu() {
 
 function mostrarSobre() {
 
-    alert("Calculadora Escolar Digital\n\nDesenvolvido por Rayssa Santos 📚")
+    alert(
+
+"📊 CALCULADORA ESCOLAR DIGITAL\n\n" +
+
+"Desenvolvido por Rayssa Santos 📚\n\n" +
+
+"Este aplicativo foi criado com o objetivo de facilitar o cálculo de médias escolares de forma prática, rápida e organizada.\n\n" +
+
+"Foi pensado especialmente para estudantes, responsáveis e professores que desejam acompanhar o desempenho escolar durante o ano letivo.\n\n" +
+
+"✅ INSTRUÇÕES DE USO:\n\n" +
+
+"• Digite o nome do aluno\n" +
+
+"• Escolha o segmento escolar\n" +
+
+"• Selecione a disciplina\n" +
+
+"• Preencha pelo menos as 3 primeiras notas\n" +
+
+"• Clique em GERAR RELATÓRIO\n" +
+
+"• Depois baixe o PDF\n\n" +
+
+"✨ Recursos do aplicativo:\n" +
+
+"• Média parcial e final\n" +
+
+"• Dashboard das notas\n" +
+
+"• Barra de desempenho\n" +
+
+"• Relatório em PDF\n" +
+
+"• Tema escuro\n" +
+
+"• Interface dinâmica"
+
+    )
 }
 
 
@@ -77,11 +119,50 @@ function limparCampos() {
 
     btnPDF.disabled = true
 
-    btnPDF.style.opacity = "0.5"
-
-    btnPDF.style.cursor = "not-allowed"
+    relatorioGerado = false
 
     atualizarDashboard()
+}
+
+
+
+
+// CORES AUTOMÁTICAS
+
+function atualizarCores() {
+
+    let seg = segmento.value
+
+    let header = document.getElementById("headerApp")
+
+
+    if (seg === "fund1") {
+
+        header.style.background = "#2196f3"
+
+        barra.style.background = "#2196f3"
+    }
+
+    else if (seg === "fund2") {
+
+        header.style.background = "#ff9800"
+
+        barra.style.background = "#ff9800"
+    }
+
+    else if (seg === "medio") {
+
+        header.style.background = "#28a745"
+
+        barra.style.background = "#28a745"
+    }
+
+    else {
+
+        header.style.background = "#444"
+
+        barra.style.background = "#444"
+    }
 }
 
 
@@ -95,71 +176,110 @@ function atualizarDisciplinas() {
 
     disciplina.innerHTML = "<option value=''>Selecione</option>"
 
-    let lista = []
 
-
+    // FUNDAMENTAL I
 
     if (seg === "fund1") {
 
-        lista = [
+        let lista = [
+
             "Português",
             "Matemática",
-            "Ciências"
+            "Ciências",
+            "História",
+            "Geografia",
+            "Arte",
+            "Educação Física",
+            "Inglês",
+            "Cultura Maker",
+            "Música",
+            "Xadrez"
+
         ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
     }
 
 
+
+    // FUNDAMENTAL II
 
     if (seg === "fund2") {
 
-        lista = [
+        let lista = [
+
             "Português",
             "Matemática",
-            "História"
+            "Ciências",
+            "História",
+            "Geografia",
+            "Língua Inglesa",
+            "Língua Espanhola",
+            "Espanhol",
+            "Arte",
+            "Educação Física",
+            "Cultura Maker",
+            "Redação",
+            "Música"
+
         ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
     }
 
 
+
+    // ENSINO MÉDIO
 
     if (seg === "medio") {
 
-        lista = [
+        let lista = [
+
+            "Língua Portuguesa",
+            "Língua Inglesa",
+            "Língua Espanhola",
+            "Matemática",
             "Física",
             "Química",
-            "Biologia"
+            "Biologia",
+            "História",
+            "Geografia",
+            "Sociologia",
+            "Filosofia",
+            "Redação",
+            "Literatura",
+            "Música"
+
         ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
     }
 
-
-
-    lista.forEach(m => {
-
-        let op = document.createElement("option")
-
-        op.text = m
-
-        op.value = m
-
-        disciplina.add(op)
-    })
-}
-
-
-
-
-// GERAR RELATÓRIO
-
-function gerarRelatorio() {
-
-    simularMedia(true)
-
-    btnPDF.disabled = false
-
-    btnPDF.style.opacity = "1"
-
-    btnPDF.style.cursor = "pointer"
-
-    relatorioGerado = true
+    atualizarCores()
 }
 
 
@@ -168,6 +288,13 @@ function gerarRelatorio() {
 // CALCULAR
 
 function simularMedia(mostrarAlerta = false) {
+
+    // SÓ LIBERA PDF AO CLICAR EM GERAR RELATÓRIO
+
+    if (mostrarAlerta) {
+
+        relatorioGerado = true
+    }
 
     let aluno = nome.value.trim()
 
@@ -178,9 +305,12 @@ function simularMedia(mostrarAlerta = false) {
     let n3 = parseFloat(b3.value)
     let n4 = parseFloat(b4.value)
 
+
     atualizarDashboard()
 
 
+
+    // VALIDAÇÕES
 
     if (!aluno) {
 
@@ -193,8 +323,7 @@ function simularMedia(mostrarAlerta = false) {
     }
 
 
-
-    if (!materia) {
+    if (!materia || materia === "Selecione") {
 
         if (mostrarAlerta) {
 
@@ -205,15 +334,19 @@ function simularMedia(mostrarAlerta = false) {
     }
 
 
-
     if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
 
         resultado.innerHTML = ""
+
+        barra.style.width = "0%"
 
         return
     }
 
 
+
+
+    // MÉDIA PARCIAL
 
     let soma3 = n1 + n2 + n3
 
@@ -222,19 +355,43 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
+    // SEM 4º BIMESTRE
+
     if (isNaN(n4)) {
+
+        let precisa = (6 * 4) - soma3
+
+        if (precisa < 0) {
+
+            precisa = 0
+        }
 
         resultado.innerHTML =
 
-        "<strong>Aluno:</strong> " + aluno +
+            "<strong>Aluno:</strong> " + aluno +
 
-        "<br><br><strong>Disciplina:</strong> " + materia +
+            "<br><br><strong>Disciplina:</strong> " + materia +
 
-        "<br><br><strong>Média parcial:</strong> " +
+            "<br><br><strong>Média parcial:</strong> " + mediaParcial.toFixed(2) +
 
-        mediaParcial.toFixed(2)
+            "<br><br><strong>Situação:</strong> " +
+
+            "<span style='color:#facc15; font-size:22px; font-weight:bold'>" +
+
+            "🟡 EM ANDAMENTO" +
+
+            "</span>" +
+
+            "<br><br><strong>Precisa tirar:</strong> " +
+
+            precisa.toFixed(2) +
+
+            " no 4º bimestre"
+
 
         barra.style.width = (mediaParcial * 10) + "%"
+
+        btnPDF.disabled = false
 
         return
     }
@@ -242,31 +399,87 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
+    // MÉDIA FINAL
+
     let mediaFinal = (soma3 + n4) / 4
+
+    let status = ""
+
+    let cor = ""
+
+
+
+    // APROVADO
+
+    if (mediaFinal >= 6) {
+
+        status = "🟢 APROVADO"
+
+        cor = "#22c55e"
+
+        barra.style.width = "100%"
+
+        soltarConfete()
+    }
+
+
+
+    // RECUPERAÇÃO FINAL
+
+    else {
+
+        status = "🔴 RECUPERAÇÃO FINAL"
+
+        cor = "#ef4444"
+
+        barra.style.width = (mediaFinal * 10) + "%"
+    }
+
+
 
     resultado.innerHTML =
 
-    "<strong>Aluno:</strong> " + aluno +
+        "<strong>Aluno:</strong> " + aluno +
 
-    "<br><br><strong>Disciplina:</strong> " + materia +
+        "<br><br><strong>Disciplina:</strong> " + materia +
 
-    "<br><br><strong>Média final:</strong> " +
+        "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
 
-    mediaFinal.toFixed(2)
+        "<br><br><strong>Situação:</strong> " +
 
-    barra.style.width = (mediaFinal * 10) + "%"
+        "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
+
+        status +
+
+        "</span>"
+
+
+    btnPDF.disabled = false
 }
 
 
 
 
-// PDF
+// PDF PREMIUM
 
 function baixarRelatorio() {
 
+    // VERIFICA SE GEROU RELATÓRIO
+
     if (!relatorioGerado) {
 
-        alert("Clique primeiro em Gerar Relatório")
+        alert("Gere o relatório primeiro 📊")
+
+        return
+    }
+
+
+    let aluno = nome.value.trim()
+
+
+    if (!aluno) {
+
+        alert("Digite o nome do aluno")
 
         return
     }
@@ -276,21 +489,52 @@ function baixarRelatorio() {
 
     let doc = new jsPDF()
 
-    doc.setFontSize(18)
+
+    // TÍTULO
+
+    doc.setFontSize(20)
+
+    doc.setTextColor(37, 99, 235)
 
     doc.text("RELATÓRIO ESCOLAR DIGITAL", 20, 20)
 
+
+    // LINHA
+
+    doc.setDrawColor(37, 99, 235)
+
+    doc.line(20, 25, 190, 25)
+
+
+    // TEXTO
+
     doc.setFontSize(12)
 
-    doc.text(resultado.innerText, 20, 40)
+    doc.setTextColor(0, 0, 0)
 
-    doc.save("relatorio.pdf")
+    let texto = resultado.innerText
+
+    doc.text(texto, 20, 45)
+
+
+    // DATA
+
+    let data = new Date().toLocaleDateString("pt-BR")
+
+    doc.setFontSize(10)
+
+    doc.text("Gerado em: " + data, 20, 270)
+
+
+    // SALVAR
+
+    doc.save("relatorio-" + aluno + ".pdf")
 }
 
 
 
 
-// LIMITAR NOTA
+// LIMITAR NOTAS
 
 function limitarNota(campo) {
 
@@ -300,13 +544,14 @@ function limitarNota(campo) {
 
     valor = valor.replace(/[^0-9.]/g, "")
 
+
     const partes = valor.split(".")
+
 
     if (partes.length > 2) {
 
         valor = partes[0] + "." + partes[1]
     }
-
 
 
     if (valor.endsWith(".")) {
@@ -317,9 +562,7 @@ function limitarNota(campo) {
     }
 
 
-
     let numero = parseFloat(valor)
-
 
 
     if (isNaN(numero)) {
@@ -330,19 +573,16 @@ function limitarNota(campo) {
     }
 
 
-
     if (numero > 10) {
 
         numero = 10
     }
 
 
-
     if (numero < 0) {
 
         numero = 0
     }
-
 
 
     campo.value = numero
@@ -390,6 +630,63 @@ b4.addEventListener("input", () => {
 
 
 
+// TELA DE CARREGAMENTO
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        const loading = document.getElementById("loading")
+
+        loading.style.opacity = "0"
+
+        loading.style.pointerEvents = "none"
+
+        setTimeout(() => {
+
+            loading.style.display = "none"
+
+        }, 500)
+
+    }, 3000)
+
+})
+
+
+
+
+// CONFETE
+
+function soltarConfete() {
+
+    for (let i = 0; i < 120; i++) {
+
+        let confete = document.createElement("div")
+
+        confete.classList.add("confete")
+
+        confete.style.left =
+            Math.random() * window.innerWidth + "px"
+
+        confete.style.background =
+            `hsl(${Math.random() * 360},100%,50%)`
+
+        confete.style.animationDuration =
+            (Math.random() * 3 + 2) + "s"
+
+        document.body.appendChild(confete)
+
+        setTimeout(() => {
+
+            confete.remove()
+
+        }, 5000)
+    }
+}
+
+
+
+
 // DASHBOARD
 
 function atualizarDashboard() {
@@ -399,21 +696,45 @@ function atualizarDashboard() {
     const graf3 = document.getElementById("graf3")
     const graf4 = document.getElementById("graf4")
 
-    if (!graf1) return
 
-    graf1.style.height = ((parseFloat(b1.value) || 0) * 18) + "px"
+    if (!graf1 || !graf2 || !graf3 || !graf4) {
 
-    graf2.style.height = ((parseFloat(b2.value) || 0) * 18) + "px"
+        return
+    }
 
-    graf3.style.height = ((parseFloat(b3.value) || 0) * 18) + "px"
 
-    graf4.style.height = ((parseFloat(b4.value) || 0) * 18) + "px"
+    let nota1 = parseFloat(b1.value) || 0
+    let nota2 = parseFloat(b2.value) || 0
+    let nota3 = parseFloat(b3.value) || 0
+    let nota4 = parseFloat(b4.value) || 0
+
+
+    graf1.style.height = (nota1 * 18) + "px"
+
+    graf2.style.height = (nota2 * 18) + "px"
+
+    graf3.style.height = (nota3 * 18) + "px"
+
+    graf4.style.height = (nota4 * 18) + "px"
+}
+
+// GERAR RELATÓRIO
+
+function gerarRelatorio() {
+
+    simularMedia(true)
+
+    relatorioGerado = true
+
+    btnPDF.removeAttribute("disabled")
+
+    btnPDF.style.opacity = "1"
+
+    btnPDF.style.cursor = "pointer"
 }
 
 
-
-
-// TEMA
+// TEMA ESCURO
 
 function alternarTema() {
 
@@ -421,12 +742,13 @@ function alternarTema() {
 
     let botao = document.querySelector(".btnTema")
 
-    if(document.body.classList.contains("dark")) {
+
+    if(document.body.classList.contains("dark")){
 
         botao.innerHTML = "☀️"
     }
 
-    else {
+    else{
 
         botao.innerHTML = "🌙"
     }
