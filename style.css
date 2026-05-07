@@ -205,32 +205,23 @@ font-size:16px;
 
 /* BARRA PROGRESSO */
 
-.barra-container{
+.barra{
 
-width:360px;
-
-height:14px;
-
-background:#cfd6de;
-
-margin:18px auto;
-
+width:100%;
+height:20px;
+background:#ddd;
 border-radius:10px;
-
 overflow:hidden;
+margin-top:20px;
 
 }
 
-
 #barra{
 
-height:14px;
-
 width:0%;
-
-background:#22c55e;
-
-transition:width 0.8s ease;
+height:100%;
+background:green;
+transition:0.5s;
 
 }
 
