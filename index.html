@@ -15,6 +15,8 @@
 </head>
 
 <body>
+
+
 <!-- TELA DE CARREGAMENTO -->
 
 <div id="loading">
@@ -37,255 +39,274 @@
 
 </div>
 
-    <!-- MENU INICIAL -->
 
-    <div id="menuInicial" class="menu">
 
-        <h2>📊 Calculadora Escolar Digital</h2>
 
-        <button onclick="abrirCalculadora()">
-            Nova média
+<!-- MENU INICIAL -->
+
+<div id="menuInicial" class="menu">
+
+    <h2>📊 Calculadora Escolar Digital</h2>
+
+    <button onclick="abrirCalculadora()">
+        Nova média
+    </button>
+
+    <button onclick="mostrarSobre()">
+        Sobre o aplicativo
+    </button>
+
+</div>
+
+
+
+
+<!-- APP PRINCIPAL -->
+
+<div id="appPrincipal" style="display:none">
+
+
+    <!-- HEADER -->
+
+    <header id="headerApp">
+
+        <button class="btnVoltar" onclick="voltarMenu()">
+            ⬅️
         </button>
 
-        <button onclick="mostrarSobre()">
-            Sobre o aplicativo
+        📊 CALCULADORA ESCOLAR DIGITAL
+
+    </header>
+
+
+
+
+    <!-- CONTAINER -->
+
+    <div class="container">
+
+
+        <!-- NOME -->
+
+        <label for="nome">
+            Nome do aluno
+        </label>
+
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite o nome do aluno"
+        >
+
+
+
+
+        <!-- SEGMENTO -->
+
+        <label for="segmento">
+            Segmento escolar
+        </label>
+
+        <select
+            id="segmento"
+            onchange="atualizarDisciplinas()"
+        >
+
+            <option value="">
+                Selecione
+            </option>
+
+            <option value="fund1">
+                Ensino Fundamental I
+            </option>
+
+            <option value="fund2">
+                Ensino Fundamental II
+            </option>
+
+            <option value="medio">
+                Ensino Médio
+            </option>
+
+        </select>
+
+
+
+
+        <!-- DISCIPLINA -->
+
+        <label for="disciplina">
+            Disciplina
+        </label>
+
+        <select id="disciplina">
+
+            <option value="">
+                Selecione
+            </option>
+
+        </select>
+
+
+
+
+        <!-- BIMESTRES -->
+
+        <label for="b1">
+            1º Bimestre
+        </label>
+
+        <input
+            type="number"
+            id="b1"
+            min="0"
+            max="10"
+            step="0.1"
+            placeholder="Digite a nota"
+        >
+
+
+
+        <label for="b2">
+            2º Bimestre
+        </label>
+
+        <input
+            type="number"
+            id="b2"
+            min="0"
+            max="10"
+            step="0.1"
+            placeholder="Digite a nota"
+        >
+
+
+
+        <label for="b3">
+            3º Bimestre
+        </label>
+
+        <input
+            type="number"
+            id="b3"
+            min="0"
+            max="10"
+            step="0.1"
+            placeholder="Digite a nota"
+        >
+
+
+
+        <label for="b4">
+            4º Bimestre
+        </label>
+
+        <input
+            type="number"
+            id="b4"
+            min="0"
+            max="10"
+            step="0.1"
+            placeholder="Digite a nota"
+        >
+
+
+
+        <br>
+
+
+
+
+        <!-- BOTÕES -->
+
+        <button onclick="simularMedia()">
+            📊 Gerar Relatório
         </button>
 
-    </div>
 
 
+        <button
+            id="btnPDF"
+            onclick="baixarRelatorio()"
+            disabled
+        >
+            📥 Baixar Relatório
+        </button>
 
-    <!-- APP PRINCIPAL -->
 
-    <div id="appPrincipal" style="display:none">
 
+        <button class="btnLimpar" onclick="limparCampos()">
+            🧹 Limpar
+        </button>
 
-        <!-- HEADER -->
 
-        <header id="headerApp">
 
-            <button class="btnVoltar" onclick="voltarMenu()">
-                ⬅️
-            </button>
 
-            📊 CALCULADORA ESCOLAR DIGITAL
+        <!-- RESULTADO -->
 
-        </header>
+        <div id="resultado"></div>
 
 
 
-        <!-- CONTAINER -->
 
-        <div class="container">
+        <!-- BARRA -->
 
+        <div class="barra">
 
-            <!-- NOME -->
+            <div id="barra"></div>
 
-            <label for="nome">
-                Nome do aluno
-            </label>
+        </div>
 
-            <input
-                type="text"
-                id="nome"
-                placeholder="Digite o nome do aluno"
-            >
 
 
 
-            <!-- SEGMENTO -->
+        <!-- DASHBOARD -->
 
-            <label for="segmento">
-                Segmento escolar
-            </label>
+        <div class="dashboard">
 
-            <select
-                id="segmento"
-                onchange="atualizarDisciplinas()"
-            >
+            <h3>📊 Dashboard do Desempenho</h3>
 
-                <option value="">
-                    Selecione
-                </option>
+            <div class="graficoContainer">
 
-                <option value="fund1">
-                    Ensino Fundamental I
-                </option>
+                <div class="graficoItem">
 
-                <option value="fund2">
-                    Ensino Fundamental II
-                </option>
+                    <span>1º</span>
 
-                <option value="medio">
-                    Ensino Médio
-                </option>
+                    <div class="coluna" id="graf1"></div>
 
-            </select>
+                </div>
 
 
 
-            <!-- DISCIPLINA -->
+                <div class="graficoItem">
 
-            <label for="disciplina">
-                Disciplina
-            </label>
+                    <span>2º</span>
 
-            <select id="disciplina">
+                    <div class="coluna" id="graf2"></div>
 
-                <option value="">
-                    Selecione
-                </option>
+                </div>
 
-            </select>
 
 
+                <div class="graficoItem">
 
-            <!-- BIMESTRES -->
+                    <span>3º</span>
 
-            <label for="b1">
-                1º Bimestre
-            </label>
+                    <div class="coluna" id="graf3"></div>
 
-            <input
-                type="number"
-                id="b1"
-                min="0"
-                max="10"
-                step="0.1"
-                placeholder="Digite a nota"
-            >
+                </div>
 
 
 
-            <label for="b2">
-                2º Bimestre
-            </label>
+                <div class="graficoItem">
 
-            <input
-                type="number"
-                id="b2"
-                min="0"
-                max="10"
-                step="0.1"
-                placeholder="Digite a nota"
-            >
+                    <span>4º</span>
 
+                    <div class="coluna" id="graf4"></div>
 
-
-            <label for="b3">
-                3º Bimestre
-            </label>
-
-            <input
-                type="number"
-                id="b3"
-                min="0"
-                max="10"
-                step="0.1"
-                placeholder="Digite a nota"
-            >
-
-
-
-            <label for="b4">
-                4º Bimestre
-            </label>
-
-            <input
-                type="number"
-                id="b4"
-                min="0"
-                max="10"
-                step="0.1"
-                placeholder="Digite a nota"
-            >
-
-
-
-            <br>
-
-
-
-            <!-- BOTÕES -->
-
-            <button onclick="simularMedia()">
-                📊 Gerar Relatório
-            </button>
-
-
-
-            <button
-                id="btnPDF"
-                onclick="baixarRelatorio()"
-                disabled
-            >
-                📥 Baixar Relatório
-            </button>
-
-
-
-           <button class="btnLimpar" onclick="limparCampos()">
-🧹 Limpar
-</button>
-
-
-
-            <!-- RESULTADO -->
-
-            <div id="resultado"></div>
-
-
-
-            <!-- BARRA -->
-
-            <div class="barra">
-
-                <div id="barra"></div>
+                </div>
 
             </div>
-
-
-        </div>
-
-    </div>
-
-<!-- DASHBOARD -->
-
-<div class="dashboard">
-
-    <h3>📊 Dashboard do Desempenho</h3>
-
-    <div class="graficoContainer">
-
-        <div class="graficoItem">
-
-            <span>1º</span>
-
-            <div class="coluna" id="graf1"></div>
-
-        </div>
-
-        <div class="graficoItem">
-
-            <span>2º</span>
-
-            <div class="coluna" id="graf2"></div>
-
-        </div>
-
-        <div class="graficoItem">
-
-            <span>3º</span>
-
-            <div class="coluna" id="graf3"></div>
-
-        </div>
-
-        <div class="graficoItem">
-
-            <span>4º</span>
-
-            <div class="coluna" id="graf4"></div>
 
         </div>
 
@@ -293,9 +314,12 @@
 
 </div>
 
-    <!-- SCRIPT -->
 
-    <script src="script.js"></script>
+
+
+<!-- SCRIPT -->
+
+<script src="script.js"></script>
 
 </body>
 
