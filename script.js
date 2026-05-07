@@ -736,3 +736,13 @@ function alternarTema() {
         botao.innerHTML = "🌙"
     }
 }
+// GERAR RELATÓRIO
+
+function gerarRelatorio() {
+
+    simularMedia(true)
+
+    btnPDF.disabled = false
+
+    relatorioGerado = true
+}
