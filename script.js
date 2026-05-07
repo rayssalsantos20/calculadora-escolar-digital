@@ -27,11 +27,37 @@ let relatorioGerado = false
 
 function abrirCalculadora() {
 
-    menuInicial.style.display = "none"
+    const loading = document.getElementById("loadingSistema")
 
-    appPrincipal.style.display = "block"
+    loading.style.display = "flex"
 
-    limparCampos()
+
+
+    setTimeout(() => {
+
+        loading.style.opacity = "0"
+
+
+
+        setTimeout(() => {
+
+            loading.style.display = "none"
+
+            loading.style.opacity = "1"
+
+
+
+            menuInicial.style.display = "none"
+
+            appPrincipal.style.display = "block"
+
+
+
+            limparCampos()
+
+        }, 700)
+
+    }, 2500)
 }
 
 
