@@ -17,46 +17,13 @@
 <body>
 
 
-<!-- TELA DE CARREGAMENTO -->
-
-<div id="loading">
-
-    <div class="loaderCard">
-
-        <img src="logo.png" class="logoSplash">
-
-        <h2 class="tituloSplash">
-            Calculadora Escolar Digital
-        </h2>
-
-        <p class="textoSplash">
-            Preparando seu ambiente escolar...
-        </p>
-
-        <div class="loadingBar">
-
-            <div class="loadingProgress"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-
 <!-- MENU INICIAL -->
 
 <div id="menuInicial" class="menu">
 
-    <div class="logoArea">
+    <img src="logo.png" class="logoMenu">
 
-        <img src="logo.png" class="logo">
-
-        <h2>Calculadora Escolar Digital</h2>
-
-    </div>
+    <h2>Calculadora Escolar Digital</h2>
 
     <button onclick="abrirCalculadora()">
         Nova média
@@ -70,12 +37,11 @@
 
 
 
+
 <!-- APP PRINCIPAL -->
 
 <div id="appPrincipal" style="display:none">
 
-
-    <!-- HEADER -->
 
     <header id="headerApp">
 
@@ -94,140 +60,69 @@
 
 
 
-    <!-- CONTAINER -->
-
     <div class="container">
 
 
-        <!-- NOME -->
+        <label>Nome do aluno</label>
 
-        <label for="nome">
-            Nome do aluno
-        </label>
-
-        <input
-            type="text"
-            id="nome"
-            placeholder="Digite o nome do aluno"
-        >
+        <input type="text" id="nome" placeholder="Digite o nome do aluno">
 
 
 
+        <label>Segmento escolar</label>
 
-        <!-- SEGMENTO -->
+        <select id="segmento" onchange="atualizarDisciplinas()">
 
-        <label for="segmento">
-            Segmento escolar
-        </label>
+            <option value="">Selecione</option>
 
-        <select
-            id="segmento"
-            onchange="atualizarDisciplinas()"
-        >
+            <option value="fund1">Ensino Fundamental I</option>
 
-            <option value="">
-                Selecione
-            </option>
+            <option value="fund2">Ensino Fundamental II</option>
 
-            <option value="fund1">
-                Ensino Fundamental I
-            </option>
-
-            <option value="fund2">
-                Ensino Fundamental II
-            </option>
-
-            <option value="medio">
-                Ensino Médio
-            </option>
+            <option value="medio">Ensino Médio</option>
 
         </select>
 
 
 
 
-        <!-- DISCIPLINA -->
-
-        <label for="disciplina">
-            Disciplina
-        </label>
+        <label>Disciplina</label>
 
         <select id="disciplina">
 
-            <option value="">
-                Selecione
-            </option>
+            <option value="">Selecione</option>
 
         </select>
 
 
 
 
-        <!-- BIMESTRES -->
+        <label>1º Bimestre</label>
 
-        <label for="b1">
-            1º Bimestre
-        </label>
-
-        <input
-            type="text"
-            inputmode="decimal"
-            id="b1"
-            placeholder="Digite a nota"
-        >
+        <input type="text" inputmode="decimal" id="b1" placeholder="Digite a nota">
 
 
 
+        <label>2º Bimestre</label>
 
-        <label for="b2">
-            2º Bimestre
-        </label>
+        <input type="text" inputmode="decimal" id="b2" placeholder="Digite a nota">
 
-        <input
-            type="text"
-            inputmode="decimal"
-            id="b2"
-            placeholder="Digite a nota"
-        >
+
+
+        <label>3º Bimestre</label>
+
+        <input type="text" inputmode="decimal" id="b3" placeholder="Digite a nota">
+
+
+
+        <label>4º Bimestre</label>
+
+        <input type="text" inputmode="decimal" id="b4" placeholder="Digite a nota">
 
 
 
 
-        <label for="b3">
-            3º Bimestre
-        </label>
-
-        <input
-            type="text"
-            inputmode="decimal"
-            id="b3"
-            placeholder="Digite a nota"
-        >
-
-
-
-
-        <label for="b4">
-            4º Bimestre
-        </label>
-
-        <input
-            type="text"
-            inputmode="decimal"
-            id="b4"
-            placeholder="Digite a nota"
-        >
-
-
-
-        <br>
-
-
-
-
-        <!-- BOTÕES -->
-
-      <button onclick="gerarRelatorio()">
+        <button onclick="gerarRelatorio()">
             📊 Gerar Relatório
         </button>
 
@@ -250,14 +145,10 @@
 
 
 
-        <!-- RESULTADO -->
-
         <div id="resultado"></div>
 
 
 
-
-        <!-- BARRA -->
 
         <div class="barra">
 
@@ -268,8 +159,6 @@
 
 
 
-        <!-- DASHBOARD -->
-
         <div class="dashboard">
 
             <h3>📊 Dashboard do Desempenho</h3>
@@ -277,41 +166,23 @@
             <div class="graficoContainer">
 
                 <div class="graficoItem">
-
                     <span>1º</span>
-
                     <div class="coluna" id="graf1"></div>
-
                 </div>
 
-
-
                 <div class="graficoItem">
-
                     <span>2º</span>
-
                     <div class="coluna" id="graf2"></div>
-
                 </div>
 
-
-
                 <div class="graficoItem">
-
                     <span>3º</span>
-
                     <div class="coluna" id="graf3"></div>
-
                 </div>
 
-
-
                 <div class="graficoItem">
-
                     <span>4º</span>
-
                     <div class="coluna" id="graf4"></div>
-
                 </div>
 
             </div>
@@ -323,12 +194,7 @@
 </div>
 
 
-
-
-<!-- SCRIPT -->
-
 <script src="script.js"></script>
 
 </body>
-
 </html>
