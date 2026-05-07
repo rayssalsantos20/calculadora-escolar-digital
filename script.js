@@ -82,6 +82,8 @@ function mostrarSobre() {
 
 "• Relatório em PDF\n" +
 
+"• Dashboard das notas\n" +
+
 "• Interface dinâmica por segmento escolar"
 
     )
@@ -110,6 +112,11 @@ function limparCampos() {
     barra.style.width = "0%"
 
     btnPDF.disabled = true
+
+
+    // RESET DASHBOARD
+
+    atualizarDashboard()
 }
 
 
@@ -309,6 +316,11 @@ function simularMedia(mostrarAlerta = false) {
     let n4 = parseFloat(b4.value)
 
 
+    // ATUALIZA DASHBOARD
+
+    atualizarDashboard()
+
+
 
     // VALIDAÇÕES
 
@@ -394,7 +406,7 @@ function simularMedia(mostrarAlerta = false) {
 
 
         barra.style.width = (mediaParcial * 10) + "%"
-atualizarDashboard(n1, n2, n3, n4)
+
         btnPDF.disabled = false
 
         return
@@ -517,8 +529,6 @@ function baixarRelatorio() {
 b1.addEventListener("input", () => {
 
     simularMedia(false)
-
-    atualizarDashboard()
 })
 
 
@@ -526,8 +536,6 @@ b1.addEventListener("input", () => {
 b2.addEventListener("input", () => {
 
     simularMedia(false)
-
-    atualizarDashboard()
 })
 
 
@@ -535,8 +543,6 @@ b2.addEventListener("input", () => {
 b3.addEventListener("input", () => {
 
     simularMedia(false)
-
-    atualizarDashboard()
 })
 
 
@@ -544,9 +550,8 @@ b3.addEventListener("input", () => {
 b4.addEventListener("input", () => {
 
     simularMedia(false)
-
-    atualizarDashboard()
 })
+
 
 
 
@@ -594,26 +599,31 @@ function soltarConfete() {
         }, 5000)
     }
 }
+
+
+
+
 // DASHBOARD
 
 function atualizarDashboard() {
 
-    let n1 = parseFloat(b1.value) || 0
-    let n2 = parseFloat(b2.value) || 0
-    let n3 = parseFloat(b3.value) || 0
-    let n4 = parseFloat(b4.value) || 0
+    let nota1 = parseFloat(b1.value) || 0
+    let nota2 = parseFloat(b2.value) || 0
+    let nota3 = parseFloat(b3.value) || 0
+    let nota4 = parseFloat(b4.value) || 0
 
 
-    document.getElementById("graf1").style.height =
-        (n1 * 18) + "px"
+    const graf1 = document.getElementById("graf1")
+    const graf2 = document.getElementById("graf2")
+    const graf3 = document.getElementById("graf3")
+    const graf4 = document.getElementById("graf4")
 
-    document.getElementById("graf2").style.height =
-        (n2 * 18) + "px"
 
-    document.getElementById("graf3").style.height =
-        (n3 * 18) + "px"
+    graf1.style.height = (nota1 * 18) + "px"
 
-    document.getElementById("graf4").style.height =
-        (n4 * 18) + "px"
-}
+    graf2.style.height = (nota2 * 18) + "px"
+
+    graf3.style.height = (nota3 * 18) + "px"
+
+    graf4.style.height = (nota4 * 18) + "px"
 }
