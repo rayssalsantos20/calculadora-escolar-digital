@@ -549,7 +549,7 @@ z-index:99999;
 animation:sumir 1s ease forwards;
 
 animation-delay:2.5s;
-
+transition:0.5s;
 }
 
 
