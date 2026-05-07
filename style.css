@@ -407,3 +407,14 @@ border-radius: 20px;
 box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 
 }
+#headerApp{
+
+transition:0.5s;
+
+}
+
+#barra{
+
+transition:0.5s;
+
+}
