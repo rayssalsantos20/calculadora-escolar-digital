@@ -1556,3 +1556,76 @@ background:#0f172a;
 color:white;
 
 }
+/* INPUTS PREMIUM */
+
+input,
+select{
+
+transition:0.3s ease;
+
+}
+
+
+
+/* EFEITO AO CLICAR */
+
+input:focus,
+select:focus{
+
+transform:scale(1.02);
+
+outline:none;
+
+border:2px solid #3b82f6;
+
+box-shadow:
+0 0 15px rgba(59,130,246,0.5);
+
+}
+/* BOTÕES PREMIUM */
+
+button{
+
+transition:0.3s ease;
+
+}
+
+
+
+/* HOVER */
+
+button:hover{
+
+transform:
+translateY(-3px)
+scale(1.03);
+
+box-shadow:
+0 10px 20px rgba(0,0,0,0.25);
+
+}
+
+
+
+/* CLIQUE */
+
+button:active{
+
+transform:scale(0.97);
+
+}
+/* HEADER PREMIUM */
+
+#headerApp{
+
+background:
+linear-gradient(
+90deg,
+#2563eb,
+#1d4ed8
+);
+
+box-shadow:
+0 5px 25px rgba(37,99,235,0.4);
+
+}
