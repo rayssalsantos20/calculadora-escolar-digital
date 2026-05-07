@@ -1,204 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>Calculadora Escolar Digital</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>Calculadora Escolar Digital</title>
+    <link rel="manifest" href="manifest.json">
 
-<link rel="manifest" href="./manifest.json">
-
-<meta name="theme-color"
-content="#1f4e79">
-
-<link rel="stylesheet" href="./style.css">
-
+    <meta name="theme-color" content="#2563eb">
 </head>
-
 
 <body>
 
+    <div class="container">
 
-<!-- MENU INICIAL -->
+        <h1>📚 Calculadora Escolar Digital</h1>
 
-<div id="menuInicial" class="menu">
+        <label>Nome do aluno</label>
+        <input type="text" id="nome" placeholder="Digite o nome do aluno">
 
-<h2> Calculadora Escolar Digital</h2>
+        <label>1ª Nota</label>
+        <input type="number" id="nota1" placeholder="Digite a nota">
 
-<button onclick="abrirCalculadora()">
-Nova média
-</button>
+        <label>2ª Nota</label>
+        <input type="number" id="nota2" placeholder="Digite a nota">
 
-<button onclick="mostrarSobre()">
-Sobre o aplicativo
-</button>
+        <label>3ª Nota</label>
+        <input type="number" id="nota3" placeholder="Digite a nota">
 
-</div>
+        <label>4ª Nota</label>
+        <input type="number" id="nota4" placeholder="Digite a nota">
 
+        <button class="btn-calcular" onclick="calcularMedia()">
+            Calcular Média
+        </button>
 
-<!-- APP PRINCIPAL -->
+        <button class="btn-nova" onclick="novaMedia()">
+            Nova Média
+        </button>
 
-<div id="appPrincipal"
-style="display:none;">
+        <button class="btn-sobre" onclick="sobreApp()">
+            Sobre o Aplicativo
+        </button>
 
+        <div class="resultado" id="resultado">
 
-<header id="headerApp">
+            <h2>Resultado</h2>
 
-<button class="btnVoltar" onclick="voltarMenu()">
-⬅️
-</button>
+            <p id="nomeAluno"></p>
 
-<span id="iconeSegmento">🧮</span>
+            <p id="mediaFinal"></p>
 
-CALCULADORA ESCOLAR DIGITAL
+            <p class="status" id="situacao"></p>
 
-</header>
+        </div>
 
+        <div class="footer">
+            Desenvolvido por Rayssa Santos 💙
+        </div>
 
-<p class="subtitulo">
-Sistema automático de cálculo da média anual
-</p>
+    </div>
 
-
-<p id="dataAtual"></p>
-
-
-<div class="card">
-
-
-<label>Nome do aluno</label>
-
-<input id="nome"
-placeholder="Digite o nome">
-
-
-<label>Segmento escolar</label>
-
-<select id="segmento"
-onchange="atualizarDisciplinas()">
-
-<option value="">
-Selecione
-</option>
-
-<option value="fund1">
-Ensino Fundamental I
-</option>
-
-<option value="fund2">
-Ensino Fundamental II
-</option>
-
-<option value="medio">
-Ensino Médio
-</option>
-
-</select>
-
-
-<label>Disciplina</label>
-
-<select id="disciplina"></select>
-
-<label for="b1">1º Bimestre</label>
-
-<input type="number" id="b1">
-
-
-
-
-<label>2º Bimestre</label>
-
-<input id="b2" type="number">
-
-
-<label>3º Bimestre</label>
-
-<input id="b3" type="number">
-
-
-<label>4º Bimestre</label>
-
-<input id="b4" type="number">
-
-
-<br>
-
-
-<button id="btnPDF" onclick="baixarRelatorio()" disabled>
-📥 Baixar Relatório
-</button>
-
-
-<button onclick="limparCampos()">
-🧹 Limpar
-</button>
-
-
-<br><br>
-
-
-<button id="btnPDF"
-onclick="baixarRelatorio()">
-
-📥 Baixar Relatório
-
-</button>
-
-
-<br><br>
-
-
-<button id="btnInstalar"
-style="display:none;">
-
-📲 Instalar aplicativo
-
-</button>
-
-
-</div>
-
-
-<div id="resultado"></div>
-
-
-<div class="barra-container">
-
-<div id="barra"></div>
-
-</div>
-
-
-<footer>
-
-Desenvolvido por Rayssa Santos
-
-</footer>
-
-
-</div>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script src="./script.js"></script>
-
-
-<script>
-
-if ("serviceWorker" in navigator) {
-
-navigator.serviceWorker.register("./service-worker.js");
-
-}
-
-</script>
-
+    <script src="script.js"></script>
 
 </body>
 
