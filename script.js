@@ -514,14 +514,39 @@ function baixarRelatorio() {
 
 // CÁLCULO AUTOMÁTICO
 
-b1.addEventListener("input", () => simularMedia(false))
+b1.addEventListener("input", () => {
 
-b2.addEventListener("input", () => simularMedia(false))
+    simularMedia(false)
 
-b3.addEventListener("input", () => simularMedia(false))
+    atualizarDashboard()
+})
 
-b4.addEventListener("input", () => simularMedia(false))
 
+
+b2.addEventListener("input", () => {
+
+    simularMedia(false)
+
+    atualizarDashboard()
+})
+
+
+
+b3.addEventListener("input", () => {
+
+    simularMedia(false)
+
+    atualizarDashboard()
+})
+
+
+
+b4.addEventListener("input", () => {
+
+    simularMedia(false)
+
+    atualizarDashboard()
+})
 
 
 
@@ -571,18 +596,24 @@ function soltarConfete() {
 }
 // DASHBOARD
 
-function atualizarDashboard(n1, n2, n3, n4) {
+function atualizarDashboard() {
 
-    document.getElementById("graf1").style.height = (n1 * 18) + "px"
+    let n1 = parseFloat(b1.value) || 0
+    let n2 = parseFloat(b2.value) || 0
+    let n3 = parseFloat(b3.value) || 0
+    let n4 = parseFloat(b4.value) || 0
 
-    document.getElementById("graf2").style.height = (n2 * 18) + "px"
 
-    document.getElementById("graf3").style.height = (n3 * 18) + "px"
+    document.getElementById("graf1").style.height =
+        (n1 * 18) + "px"
 
-    
-    if (!isNaN(n4)) {
+    document.getElementById("graf2").style.height =
+        (n2 * 18) + "px"
 
-        document.getElementById("graf4").style.height =
-            (n4 * 18) + "px"
-    }
+    document.getElementById("graf3").style.height =
+        (n3 * 18) + "px"
+
+    document.getElementById("graf4").style.height =
+        (n4 * 18) + "px"
+}
 }
