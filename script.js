@@ -383,7 +383,7 @@ function simularMedia(mostrarAlerta = false) {
 
         barra.style.width = (mediaParcial * 10) + "%"
 
-        btnPDF.disabled = false
+        
 
         relatorioGerado = true
 
@@ -448,7 +448,7 @@ function simularMedia(mostrarAlerta = false) {
         "</span>"
 
 
-    btnPDF.disabled = false
+   
 
     relatorioGerado = true
 }
