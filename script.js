@@ -394,7 +394,7 @@ function simularMedia(mostrarAlerta = false) {
 
 
         barra.style.width = (mediaParcial * 10) + "%"
-
+atualizarDashboard(n1, n2, n3, n4)
         btnPDF.disabled = false
 
         return
