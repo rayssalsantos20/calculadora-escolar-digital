@@ -44,7 +44,43 @@ function voltarMenu() {
 
 function mostrarSobre() {
 
-    alert("Aplicativo desenvolvido por Rayssa Santos 📚")
+    alert(
+
+"📊 CALCULADORA ESCOLAR DIGITAL\n\n" +
+
+"Desenvolvido por Rayssa Santos 📚\n\n" +
+
+"Este aplicativo foi criado com o objetivo de facilitar o cálculo de médias escolares de forma prática, rápida e organizada.\n\n" +
+
+"Foi pensado especialmente para estudantes, responsáveis e professores que desejam acompanhar o desempenho escolar durante o ano letivo.\n\n" +
+
+"✅ INSTRUÇÕES DE USO:\n\n" +
+
+"• Digite o nome do aluno\n" +
+
+"• Escolha o segmento escolar\n" +
+
+"• Selecione a disciplina\n" +
+
+"• Preencha pelo menos as 3 primeiras notas\n" +
+
+"• O sistema calculará automaticamente a média parcial\n" +
+
+"• Para baixar o relatório em PDF, é necessário gerar o relatório primeiro\n\n" +
+
+"✨ Recursos do aplicativo:\n" +
+
+"• Média parcial e final\n" +
+
+"• Cálculo automático\n" +
+
+"• Barra de desempenho\n" +
+
+"• Relatório em PDF\n" +
+
+"• Interface dinâmica por segmento escolar"
+
+    )
 }
 
 
