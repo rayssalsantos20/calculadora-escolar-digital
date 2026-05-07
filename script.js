@@ -85,7 +85,10 @@ function atualizarDisciplinas() {
             "Geografia",
             "Arte",
             "Educação Física",
-            "Inglês"
+            "Inglês",
+            "Cultura Maker"
+            "Música",
+            "Xadrez"
         ]
 
         lista.forEach(m => {
@@ -108,10 +111,14 @@ function atualizarDisciplinas() {
             "Ciências",
             "História",
             "Geografia",
-            "Inglês",
+            "Língua Inglesa",
+            "Língua Espanhola",
             "Espanhol",
             "Arte",
-            "Educação Física"
+            "Educação Física",
+            "Cultura Maker",
+            "Redação",
+            "Música"
         ]
 
         lista.forEach(m => {
@@ -129,7 +136,9 @@ function atualizarDisciplinas() {
     if (seg === "medio") {
 
         let lista = [
-            "Português",
+            "Língua Portuguesa",
+            "Língua Inglesa,
+            "Língua Espanhola",
             "Matemática",
             "Física",
             "Química",
@@ -138,7 +147,10 @@ function atualizarDisciplinas() {
             "Geografia",
             "Sociologia",
             "Filosofia",
-            "Redação"
+            "Redação",
+            "Literatura",
+            "Música"
+            
         ]
 
         lista.forEach(m => {
