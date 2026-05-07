@@ -392,19 +392,60 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
-    resultado.innerHTML =
+   let status = ""
 
-        "<strong>Aluno:</strong> " + aluno +
+let cor = ""
 
-        "<br><br><strong>Disciplina:</strong> " + materia +
 
-        "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
 
-        (mediaFinal >= 6
+// APROVADO
 
-            ? "<br><br>🟢 APROVADO"
+if (mediaFinal >= 6) {
 
-            : "<br><br>🔴 RECUPERAÇÃO FINAL")
+    status = "🟢 APROVADO"
+
+    cor = "#22c55e"
+}
+
+
+
+// EM ANDAMENTO
+
+else if (mediaFinal >= 4) {
+
+    status = "🟡 EM ANDAMENTO"
+
+    cor = "#facc15"
+}
+
+
+
+// RECUPERAÇÃO
+
+else {
+
+    status = "🔴 RECUPERAÇÃO"
+
+    cor = "#ef4444"
+}
+
+
+
+resultado.innerHTML =
+
+    "<strong>Aluno:</strong> " + aluno +
+
+    "<br><br><strong>Disciplina:</strong> " + materia +
+
+    "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
+
+    "<br><br><strong>Situação:</strong> " +
+
+    "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
+
+    status +
+
+    "</span>"
 
 
 
