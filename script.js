@@ -507,15 +507,78 @@ function baixarRelatorio() {
 
 
 
+// LIMITAR NOTAS ENTRE 0 E 10
+
+function limitarNota(campo) {
+
+    let valor = campo.value
+
+    valor = valor.replace(",", ".")
+
+    valor = parseFloat(valor)
+
+
+    if (isNaN(valor)) {
+
+        campo.value = ""
+
+        return
+    }
+
+
+    if (valor > 10) {
+
+        valor = 10
+    }
+
+
+    if (valor < 0) {
+
+        valor = 0
+    }
+
+
+    campo.value = valor
+}
+
+
+
+
 // CÁLCULO AUTOMÁTICO
 
-b1.addEventListener("input", () => simularMedia(false))
+b1.addEventListener("input", () => {
 
-b2.addEventListener("input", () => simularMedia(false))
+    limitarNota(b1)
 
-b3.addEventListener("input", () => simularMedia(false))
+    simularMedia(false)
+})
 
-b4.addEventListener("input", () => simularMedia(false))
+
+
+b2.addEventListener("input", () => {
+
+    limitarNota(b2)
+
+    simularMedia(false)
+})
+
+
+
+b3.addEventListener("input", () => {
+
+    limitarNota(b3)
+
+    simularMedia(false)
+})
+
+
+
+b4.addEventListener("input", () => {
+
+    limitarNota(b4)
+
+    simularMedia(false)
+})
 
 
 
@@ -588,8 +651,6 @@ function atualizarDashboard() {
     const graf4 = document.getElementById("graf4")
 
 
-    // EVITA ERRO
-
     if (!graf1 || !graf2 || !graf3 || !graf4) {
 
         return
@@ -610,6 +671,10 @@ function atualizarDashboard() {
 
     graf4.style.height = (nota4 * 18) + "px"
 }
+
+
+
+
 // TEMA ESCURO
 
 function alternarTema() {
@@ -630,33 +695,3 @@ function alternarTema() {
         botao.innerHTML = "🌙"
     }
 }
-// LIMITAR NOTAS ENTRE 0 E 10
-
-function limitarNota(campo) {
-
-    let valor = parseFloat(campo.value)
-
-    
-    if (valor > 10) {
-
-        campo.value = 10
-    }
-
-
-    if (valor < 0) {
-
-        campo.value = 0
-    }
-}
-
-
-
-// APLICAR NOS CAMPOS
-
-b1.addEventListener("input", () => limitarNota(b1))
-
-b2.addEventListener("input", () => limitarNota(b2))
-
-b3.addEventListener("input", () => limitarNota(b3))
-
-b4.addEventListener("input", () => limitarNota(b4))
