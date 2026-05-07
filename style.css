@@ -706,3 +706,14 @@ font-weight:bold;
 font-size:22px;
 
 }
+/* BOTÃO LIMPAR CENTRALIZADO */
+
+.btnLimpar{
+
+display:block;
+
+margin:20px auto 0 auto;
+
+width:200px;
+
+}
