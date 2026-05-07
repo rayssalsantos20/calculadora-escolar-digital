@@ -60,52 +60,13 @@ animation:entrada 0.8s ease;
 
 
 
-/* TOPO */
-
-.topoMenu{
-
-display:flex;
-
-align-items:center;
-justify-content:center;
-
-gap:15px;
-
-margin-bottom:25px;
-
-}
 
 
 
-.logoTopo{
-
-width:85px;
-
-height:85px;
-
-object-fit:contain;
-
-}
 
 
 
-.topoMenu h1{
 
-font-size:52px;
-
-color:#84cc16;
-
-}
-
-
-
-.topoMenu p{
-
-font-size:15px;
-
-color:#94a3b8;
-
-}
 
 
 
@@ -113,17 +74,17 @@ color:#94a3b8;
 
 .imagemPrincipal{
 
-width:260px;
+width:340px;
 
 max-width:100%;
 
 display:block;
 
-margin:25px auto;
+margin:20px auto 30px auto;
 
 object-fit:contain;
 
-filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+filter:drop-shadow(0 15px 25px rgba(0,0,0,0.18));
 
 animation:flutuar 4s ease-in-out infinite;
 
