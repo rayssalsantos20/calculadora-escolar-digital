@@ -280,3 +280,157 @@ function baixarRelatorio() {
 
     doc.save("relatorio-" + aluno + ".pdf")
 }
+// MUDAR CORES AUTOMATICAMENTE PELO SEGMENTO
+
+function atualizarCores() {
+
+    let seg = segmento.value
+
+    let header = document.getElementById("headerApp")
+
+
+    // FUNDAMENTAL I
+
+    if (seg === "fund1") {
+
+        header.style.background = "#2196f3"
+
+        barra.style.background = "#2196f3"
+    }
+
+
+    // FUNDAMENTAL II
+
+    else if (seg === "fund2") {
+
+        header.style.background = "#ff9800"
+
+        barra.style.background = "#ff9800"
+    }
+
+
+    // ENSINO MÉDIO
+
+    else if (seg === "medio") {
+
+        header.style.background = "#28a745"
+
+        barra.style.background = "#28a745"
+    }
+
+
+    // PADRÃO
+
+    else {
+
+        header.style.background = "#444"
+
+        barra.style.background = "#444"
+    }
+}
+
+
+
+// ATUALIZAR DISCIPLINAS + CORES
+
+function atualizarDisciplinas() {
+
+    let seg = segmento.value
+
+    disciplina.innerHTML = "<option value=''>Selecione</option>"
+
+
+    if (seg === "fund1") {
+
+        let lista = [
+
+            "Português",
+            "Matemática",
+            "Ciências",
+            "História",
+            "Geografia",
+            "Arte",
+            "Educação Física",
+            "Inglês"
+        ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
+    }
+
+
+
+    if (seg === "fund2") {
+
+        let lista = [
+
+            "Português",
+            "Matemática",
+            "Ciências",
+            "História",
+            "Geografia",
+            "Inglês",
+            "Espanhol",
+            "Arte",
+            "Educação Física"
+        ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
+    }
+
+
+
+    if (seg === "medio") {
+
+        let lista = [
+
+            "Português",
+            "Matemática",
+            "Física",
+            "Química",
+            "Biologia",
+            "História",
+            "Geografia",
+            "Sociologia",
+            "Filosofia",
+            "Redação"
+        ]
+
+        lista.forEach(m => {
+
+            let op = document.createElement("option")
+
+            op.text = m
+            op.value = m
+
+            disciplina.add(op)
+        })
+    }
+
+
+    atualizarCores()
+}
+
+
+
+// CÁLCULO AUTOMÁTICO AO DIGITAR
+
+b1.addEventListener("input", simularMedia)
+b2.addEventListener("input", simularMedia)
+b3.addEventListener("input", simularMedia)
+b4.addEventListener("input", simularMedia)
