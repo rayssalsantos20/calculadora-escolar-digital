@@ -20,6 +20,7 @@ const btnPDF = document.getElementById("btnPDF")
 
 
 
+
 // MENU
 
 function abrirCalculadora() {
@@ -41,6 +42,9 @@ function voltarMenu() {
 }
 
 
+
+
+// SOBRE
 
 function mostrarSobre() {
 
@@ -397,72 +401,77 @@ function simularMedia(mostrarAlerta = false) {
     }
 
 
-// MÉDIA FINAL
-
-let mediaFinal = (soma3 + n4) / 4
-
-let status = ""
-
-let cor = ""
 
 
+    // MÉDIA FINAL
 
-// APROVADO
+    let mediaFinal = (soma3 + n4) / 4
 
-if (mediaFinal >= 6) {
+    let status = ""
 
-    status = "🟢 APROVADO"
-
-    cor = "#22c55e"
-
-
-    // BARRA COMPLETA
-
-    barra.style.width = "100%"
+    let cor = ""
 
 
-    // CONFETE
 
-    soltarConfete()
+    // APROVADO
+
+    if (mediaFinal >= 6) {
+
+        status = "🟢 APROVADO"
+
+        cor = "#22c55e"
+
+
+        // BARRA COMPLETA
+
+        barra.style.width = "100%"
+
+
+        // CONFETE
+
+        soltarConfete()
+    }
+
+
+
+    // RECUPERAÇÃO FINAL
+
+    else {
+
+        status = "🔴 RECUPERAÇÃO FINAL"
+
+        cor = "#ef4444"
+
+
+        // BARRA PROPORCIONAL
+
+        barra.style.width = (mediaFinal * 10) + "%"
+    }
+
+
+
+    resultado.innerHTML =
+
+        "<strong>Aluno:</strong> " + aluno +
+
+        "<br><br><strong>Disciplina:</strong> " + materia +
+
+        "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
+
+        "<br><br><strong>Situação:</strong> " +
+
+        "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
+
+        status +
+
+        "</span>"
+
+
+
+    btnPDF.disabled = false
 }
 
 
-
-// RECUPERAÇÃO FINAL
-
-else {
-
-    status = "🔴 RECUPERAÇÃO FINAL"
-
-    cor = "#ef4444"
-
-
-    // BARRA NORMAL
-
-    barra.style.width = (mediaFinal * 10) + "%"
-}
-
-
-
-resultado.innerHTML =
-
-    "<strong>Aluno:</strong> " + aluno +
-
-    "<br><br><strong>Disciplina:</strong> " + materia +
-
-    "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
-
-    "<br><br><strong>Situação:</strong> " +
-
-    "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
-
-    status +
-
-    "</span>"
-
-
-
-btnPDF.disabled = false
 
 
 // PDF
@@ -527,33 +536,10 @@ window.addEventListener("load", () => {
     }, 3000)
 
 })
-// CONFETE AO APROVAR
-
-function soltarConfete() {
-
-    for (let i = 0; i < 80; i++) {
-
-        let confete = document.createElement("div")
-
-        confete.classList.add("confete")
-
-        confete.style.left = Math.random() * window.innerWidth + "px"
-
-        confete.style.background =
-            `hsl(${Math.random() * 360},100%,50%)`
-
-        confete.style.animationDuration =
-            (Math.random() * 3 + 2) + "s"
-
-        document.body.appendChild(confete)
 
 
-        setTimeout(() => {
 
-            confete.remove()
 
-        }, 5000)
-    }
 // CONFETE AO APROVAR
 
 function soltarConfete() {
