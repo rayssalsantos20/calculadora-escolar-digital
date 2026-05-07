@@ -365,33 +365,162 @@ opacity:1;
 
 
 
-/* RESPONSIVO */
+/* RESPONSIVO MOBILE */
 
 @media(max-width:600px){
 
-.container{
+body{
 
-padding:25px;
+padding:10px;
 
-}
-
-.menu{
-
-padding:25px;
+align-items:flex-start;
 
 }
+
+
+
+/* HEADER */
 
 #headerApp{
 
-font-size:20px;
+font-size:16px;
+
+padding:18px;
+
+padding-left:60px;
+
+}
+
+
+
+/* BOTÃO VOLTAR */
+
+.btnVoltar{
+
+left:10px;
+
+top:10px;
+
+padding:10px 12px;
+
+font-size:16px;
+
+}
+
+
+
+/* CONTAINER */
+
+.container{
+
+width:100%;
+
+margin-top:90px;
+
+padding:20px;
+
+border-radius:20px;
+
+}
+
+
+
+/* MENU */
+
+.menu{
+
+width:100%;
+
+padding:25px;
+
+}
+
+
+
+/* TÍTULO MENU */
+
+.menu h2{
+
+font-size:24px;
+
+}
+
+
+
+/* INPUTS */
+
+input,
+select{
 
 padding:16px;
 
+font-size:16px;
+
+border-radius:14px;
+
 }
+
+
+
+/* BOTÕES */
 
 button{
 
 width:100%;
+
+padding:16px;
+
+font-size:17px;
+
+border-radius:14px;
+
+}
+
+
+
+/* RESULTADO */
+
+#resultado{
+
+font-size:16px;
+
+padding:20px;
+
+}
+
+
+
+/* BARRA */
+
+.barra{
+
+height:22px;
+
+}
+
+
+
+/* LOADING */
+
+.loaderCard{
+
+padding:30px 20px;
+
+}
+
+
+
+.loaderCard h1{
+
+font-size:50px;
+
+}
+
+
+
+.loaderCard h2{
+
+font-size:22px;
 
 }
 
