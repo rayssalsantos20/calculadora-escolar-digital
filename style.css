@@ -1072,3 +1072,22 @@ color:#f3f4f6;
 color:white;
 
 }
+/* TÍTULO DASHBOARD */
+
+.dashboard h3{
+
+color:#111827;
+
+transition:0.3s;
+
+}
+
+
+
+/* MODO ESCURO */
+
+.dark .dashboard h3{
+
+color:white;
+
+}
