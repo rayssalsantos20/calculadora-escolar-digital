@@ -397,67 +397,72 @@ function simularMedia(mostrarAlerta = false) {
     }
 
 
+// MÉDIA FINAL
 
-    // MÉDIA FINAL
+let mediaFinal = (soma3 + n4) / 4
 
-    let mediaFinal = (soma3 + n4) / 4
+let status = ""
 
-
-
-    let status = ""
-
-    let cor = ""
+let cor = ""
 
 
 
-    // APROVADO
+// APROVADO
 
-    if (mediaFinal >= 6) {
+if (mediaFinal >= 6) {
 
-       status = "🟢 APROVADO"
+    status = "🟢 APROVADO"
 
-soltarConfete()
-
-        cor = "#22c55e"
-    }
+    cor = "#22c55e"
 
 
+    // BARRA COMPLETA
 
-    // RECUPERAÇÃO FINAL
-
-    else {
-
-        status = "🔴 RECUPERAÇÃO FINAL"
-
-        cor = "#ef4444"
-    }
+    barra.style.width = "100%"
 
 
+    // CONFETE
 
-    resultado.innerHTML =
-
-        "<strong>Aluno:</strong> " + aluno +
-
-        "<br><br><strong>Disciplina:</strong> " + materia +
-
-        "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
-
-        "<br><br><strong>Situação:</strong> " +
-
-        "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
-
-        status +
-
-        "</span>"
-
-
-
-    barra.style.width = (mediaFinal * 10) + "%"
-
-    btnPDF.disabled = false
+    soltarConfete()
 }
 
 
+
+// RECUPERAÇÃO FINAL
+
+else {
+
+    status = "🔴 RECUPERAÇÃO FINAL"
+
+    cor = "#ef4444"
+
+
+    // BARRA NORMAL
+
+    barra.style.width = (mediaFinal * 10) + "%"
+}
+
+
+
+resultado.innerHTML =
+
+    "<strong>Aluno:</strong> " + aluno +
+
+    "<br><br><strong>Disciplina:</strong> " + materia +
+
+    "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
+
+    "<br><br><strong>Situação:</strong> " +
+
+    "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
+
+    status +
+
+    "</span>"
+
+
+
+btnPDF.disabled = false
 
 
 // PDF
@@ -533,6 +538,34 @@ function soltarConfete() {
         confete.classList.add("confete")
 
         confete.style.left = Math.random() * window.innerWidth + "px"
+
+        confete.style.background =
+            `hsl(${Math.random() * 360},100%,50%)`
+
+        confete.style.animationDuration =
+            (Math.random() * 3 + 2) + "s"
+
+        document.body.appendChild(confete)
+
+
+        setTimeout(() => {
+
+            confete.remove()
+
+        }, 5000)
+    }
+// CONFETE AO APROVAR
+
+function soltarConfete() {
+
+    for (let i = 0; i < 120; i++) {
+
+        let confete = document.createElement("div")
+
+        confete.classList.add("confete")
+
+        confete.style.left =
+            Math.random() * window.innerWidth + "px"
 
         confete.style.background =
             `hsl(${Math.random() * 360},100%,50%)`
