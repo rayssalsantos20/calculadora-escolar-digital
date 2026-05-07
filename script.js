@@ -19,28 +19,35 @@ const barra = document.getElementById("barra")
 const btnPDF = document.getElementById("btnPDF")
 
 
+
 // MENU
 
 function abrirCalculadora() {
 
     menuInicial.style.display = "none"
+
     appPrincipal.style.display = "block"
 
     limparCampos()
 }
 
 
+
 function voltarMenu() {
 
     appPrincipal.style.display = "none"
+
     menuInicial.style.display = "block"
 }
+
 
 
 function mostrarSobre() {
 
     alert("Aplicativo desenvolvido por Rayssa Santos 📚")
 }
+
+
 
 
 // LIMPAR
@@ -66,6 +73,64 @@ function limparCampos() {
 }
 
 
+
+
+// CORES AUTOMÁTICAS
+
+function atualizarCores() {
+
+    let seg = segmento.value
+
+    let header = document.getElementById("headerApp")
+
+
+
+    // FUNDAMENTAL I
+
+    if (seg === "fund1") {
+
+        header.style.background = "#2196f3"
+
+        barra.style.background = "#2196f3"
+    }
+
+
+
+    // FUNDAMENTAL II
+
+    else if (seg === "fund2") {
+
+        header.style.background = "#ff9800"
+
+        barra.style.background = "#ff9800"
+    }
+
+
+
+    // ENSINO MÉDIO
+
+    else if (seg === "medio") {
+
+        header.style.background = "#28a745"
+
+        barra.style.background = "#28a745"
+    }
+
+
+
+    // PADRÃO
+
+    else {
+
+        header.style.background = "#444"
+
+        barra.style.background = "#444"
+    }
+}
+
+
+
+
 // DISCIPLINAS
 
 function atualizarDisciplinas() {
@@ -75,9 +140,13 @@ function atualizarDisciplinas() {
     disciplina.innerHTML = "<option value=''>Selecione</option>"
 
 
+
+    // FUNDAMENTAL I
+
     if (seg === "fund1") {
 
         let lista = [
+
             "Português",
             "Matemática",
             "Ciências",
@@ -86,10 +155,12 @@ function atualizarDisciplinas() {
             "Arte",
             "Educação Física",
             "Inglês",
-            "Cultura Maker"
+            "Cultura Maker",
             "Música",
             "Xadrez"
+
         ]
+
 
         lista.forEach(m => {
 
@@ -103,9 +174,14 @@ function atualizarDisciplinas() {
     }
 
 
+
+
+    // FUNDAMENTAL II
+
     if (seg === "fund2") {
 
         let lista = [
+
             "Português",
             "Matemática",
             "Ciências",
@@ -119,7 +195,9 @@ function atualizarDisciplinas() {
             "Cultura Maker",
             "Redação",
             "Música"
+
         ]
+
 
         lista.forEach(m => {
 
@@ -133,11 +211,16 @@ function atualizarDisciplinas() {
     }
 
 
+
+
+    // ENSINO MÉDIO
+
     if (seg === "medio") {
 
         let lista = [
+
             "Língua Portuguesa",
-            "Língua Inglesa,
+            "Língua Inglesa",
             "Língua Espanhola",
             "Matemática",
             "Física",
@@ -150,8 +233,9 @@ function atualizarDisciplinas() {
             "Redação",
             "Literatura",
             "Música"
-            
+
         ]
+
 
         lista.forEach(m => {
 
@@ -163,12 +247,17 @@ function atualizarDisciplinas() {
             disciplina.add(op)
         })
     }
+
+
+    atualizarCores()
 }
+
+
 
 
 // CALCULAR
 
-function simularMedia() {
+function simularMedia(mostrarAlerta = false) {
 
     let aluno = nome.value.trim()
 
@@ -180,40 +269,65 @@ function simularMedia() {
     let n4 = parseFloat(b4.value)
 
 
+
+    // VALIDAÇÕES
+
     if (!aluno) {
 
-        alert("Digite o nome do aluno")
+        if (mostrarAlerta) {
+
+            alert("Digite o nome do aluno")
+        }
+
         return
     }
+
+
 
     if (!materia || materia === "Selecione") {
 
-        alert("Selecione a disciplina")
+        if (mostrarAlerta) {
+
+            alert("Selecione a disciplina")
+        }
+
         return
     }
 
+
+
+    // NÃO MOSTRA ALERTA AUTOMÁTICO
 
     if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
 
-        alert("Preencha pelo menos os 3 primeiros bimestres")
+        resultado.innerHTML = ""
+
+        barra.style.width = "0%"
+
         return
     }
 
+
+
+    // MÉDIA PARCIAL
 
     let soma3 = n1 + n2 + n3
 
     let mediaParcial = soma3 / 3
 
 
-    // CASO NÃO TENHA 4º BIMESTRE
+
+    // SEM 4º BIMESTRE
 
     if (isNaN(n4)) {
 
         let precisa = (6 * 4) - soma3
 
         if (precisa < 0) {
+
             precisa = 0
         }
+
 
         resultado.innerHTML =
 
@@ -226,6 +340,7 @@ function simularMedia() {
             "<br><br><strong>Precisa tirar:</strong> " + precisa.toFixed(2) + " no 4º bimestre"
 
 
+
         barra.style.width = (mediaParcial * 10) + "%"
 
         btnPDF.disabled = false
@@ -234,9 +349,11 @@ function simularMedia() {
     }
 
 
+
     // MÉDIA FINAL
 
     let mediaFinal = (soma3 + n4) / 4
+
 
 
     resultado.innerHTML =
@@ -254,10 +371,13 @@ function simularMedia() {
             : "<br><br>🔴 RECUPERAÇÃO FINAL")
 
 
+
     barra.style.width = (mediaFinal * 10) + "%"
 
     btnPDF.disabled = false
 }
+
+
 
 
 // PDF
@@ -266,9 +386,11 @@ function baixarRelatorio() {
 
     let aluno = nome.value.trim()
 
+
     if (!aluno) {
 
         alert("Digite o nome do aluno")
+
         return
     }
 
@@ -292,157 +414,16 @@ function baixarRelatorio() {
 
     doc.save("relatorio-" + aluno + ".pdf")
 }
-// MUDAR CORES AUTOMATICAMENTE PELO SEGMENTO
-
-function atualizarCores() {
-
-    let seg = segmento.value
-
-    let header = document.getElementById("headerApp")
-
-
-    // FUNDAMENTAL I
-
-    if (seg === "fund1") {
-
-        header.style.background = "#2196f3"
-
-        barra.style.background = "#2196f3"
-    }
-
-
-    // FUNDAMENTAL II
-
-    else if (seg === "fund2") {
-
-        header.style.background = "#ff9800"
-
-        barra.style.background = "#ff9800"
-    }
-
-
-    // ENSINO MÉDIO
-
-    else if (seg === "medio") {
-
-        header.style.background = "#28a745"
-
-        barra.style.background = "#28a745"
-    }
-
-
-    // PADRÃO
-
-    else {
-
-        header.style.background = "#444"
-
-        barra.style.background = "#444"
-    }
-}
 
 
 
-// ATUALIZAR DISCIPLINAS + CORES
 
-function atualizarDisciplinas() {
+// CÁLCULO AUTOMÁTICO
 
-    let seg = segmento.value
+b1.addEventListener("input", () => simularMedia(false))
 
-    disciplina.innerHTML = "<option value=''>Selecione</option>"
+b2.addEventListener("input", () => simularMedia(false))
 
+b3.addEventListener("input", () => simularMedia(false))
 
-    if (seg === "fund1") {
-
-        let lista = [
-
-            "Português",
-            "Matemática",
-            "Ciências",
-            "História",
-            "Geografia",
-            "Arte",
-            "Educação Física",
-            "Inglês"
-        ]
-
-        lista.forEach(m => {
-
-            let op = document.createElement("option")
-
-            op.text = m
-            op.value = m
-
-            disciplina.add(op)
-        })
-    }
-
-
-
-    if (seg === "fund2") {
-
-        let lista = [
-
-            "Português",
-            "Matemática",
-            "Ciências",
-            "História",
-            "Geografia",
-            "Inglês",
-            "Espanhol",
-            "Arte",
-            "Educação Física"
-        ]
-
-        lista.forEach(m => {
-
-            let op = document.createElement("option")
-
-            op.text = m
-            op.value = m
-
-            disciplina.add(op)
-        })
-    }
-
-
-
-    if (seg === "medio") {
-
-        let lista = [
-
-            "Português",
-            "Matemática",
-            "Física",
-            "Química",
-            "Biologia",
-            "História",
-            "Geografia",
-            "Sociologia",
-            "Filosofia",
-            "Redação"
-        ]
-
-        lista.forEach(m => {
-
-            let op = document.createElement("option")
-
-            op.text = m
-            op.value = m
-
-            disciplina.add(op)
-        })
-    }
-
-
-    atualizarCores()
-}
-
-
-
-// CÁLCULO AUTOMÁTICO AO DIGITAR
-
-b1.addEventListener("input", simularMedia)
-b2.addEventListener("input", simularMedia)
-b3.addEventListener("input", simularMedia)
-b4.addEventListener("input", simularMedia)
+b4.addEventListener("input", () => simularMedia(false))
