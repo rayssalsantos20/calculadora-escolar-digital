@@ -414,7 +414,9 @@ function simularMedia(mostrarAlerta = false) {
 
     if (mediaFinal >= 6) {
 
-        status = "🟢 APROVADO"
+       status = "🟢 APROVADO"
+
+soltarConfete()
 
         cor = "#22c55e"
     }
