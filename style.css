@@ -717,3 +717,135 @@ margin:20px auto 0 auto;
 width:200px;
 
 }
+/* MICRO ANIMAÇÕES */
+
+
+
+/* BOTÕES COM BRILHO */
+
+button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+
+button::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:rgba(255,255,255,0.25);
+
+transform:skewX(-25deg);
+
+transition:0.7s;
+
+}
+
+
+
+button:hover::before{
+
+left:120%;
+
+}
+
+
+
+/* RESULTADO SURGINDO */
+
+#resultado{
+
+animation:resultadoAnimado 0.5s ease;
+
+}
+
+
+
+/* ANIMAÇÃO RESULTADO */
+
+@keyframes resultadoAnimado{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* BARRA MAIS SUAVE */
+
+#barra{
+
+transition:width 1s ease;
+
+}
+
+
+
+/* EFEITO NOS INPUTS */
+
+input:hover,
+select:hover{
+
+transform:scale(1.01);
+
+}
+
+
+
+/* CARD FLUTUANDO */
+
+.container{
+
+animation:flutuar 4s ease-in-out infinite;
+
+}
+
+
+
+@keyframes flutuar{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-4px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
