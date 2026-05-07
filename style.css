@@ -113,13 +113,19 @@ color:#94a3b8;
 
 .imagemPrincipal{
 
-width:100%;
+width:260px;
 
-max-width:280px;
-
-margin:10px auto 20px auto;
+max-width:100%;
 
 display:block;
+
+margin:25px auto;
+
+object-fit:contain;
+
+filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+
+animation:flutuar 4s ease-in-out infinite;
 
 }
 
