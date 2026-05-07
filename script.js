@@ -526,7 +526,17 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        document.getElementById("loading").style.display = "none"
+        const loading = document.getElementById("loading")
+
+        loading.style.opacity = "0"
+
+        loading.style.pointerEvents = "none"
+
+        setTimeout(() => {
+
+            loading.style.display = "none"
+
+        }, 500)
 
     }, 3000)
 
