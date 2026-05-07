@@ -849,3 +849,35 @@ transform:translateY(0px);
 }
 
 }
+/* CONFETE */
+
+.confete{
+
+position:fixed;
+
+top:-10px;
+
+width:12px;
+height:12px;
+
+border-radius:50%;
+
+z-index:99999;
+
+animation:confeteCaindo linear forwards;
+
+}
+
+
+
+@keyframes confeteCaindo{
+
+to{
+
+transform:translateY(110vh) rotate(720deg);
+
+opacity:0;
+
+}
+
+}
