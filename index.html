@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,61 +10,228 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="manifest" href="manifest.json">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <meta name="theme-color" content="#2563eb">
 </head>
 
 <body>
 
-    <div class="container">
 
-        <h1>📚 Calculadora Escolar Digital</h1>
+    <!-- MENU INICIAL -->
 
-        <label>Nome do aluno</label>
-        <input type="text" id="nome" placeholder="Digite o nome do aluno">
+    <div id="menuInicial" class="menu">
 
-        <label>1ª Nota</label>
-        <input type="number" id="nota1" placeholder="Digite a nota">
+        <h2>📊 Calculadora Escolar Digital</h2>
 
-        <label>2ª Nota</label>
-        <input type="number" id="nota2" placeholder="Digite a nota">
-
-        <label>3ª Nota</label>
-        <input type="number" id="nota3" placeholder="Digite a nota">
-
-        <label>4ª Nota</label>
-        <input type="number" id="nota4" placeholder="Digite a nota">
-
-        <button class="btn-calcular" onclick="calcularMedia()">
-            Calcular Média
+        <button onclick="abrirCalculadora()">
+            Nova média
         </button>
 
-        <button class="btn-nova" onclick="novaMedia()">
-            Nova Média
+        <button onclick="mostrarSobre()">
+            Sobre o aplicativo
         </button>
 
-        <button class="btn-sobre" onclick="sobreApp()">
-            Sobre o Aplicativo
-        </button>
+    </div>
 
-        <div class="resultado" id="resultado">
 
-            <h2>Resultado</h2>
 
-            <p id="nomeAluno"></p>
+    <!-- APP PRINCIPAL -->
 
-            <p id="mediaFinal"></p>
+    <div id="appPrincipal" style="display:none">
 
-            <p class="status" id="situacao"></p>
 
-        </div>
+        <!-- HEADER -->
 
-        <div class="footer">
-            Desenvolvido por Rayssa Santos 💙
+        <header id="headerApp">
+
+            <button class="btnVoltar" onclick="voltarMenu()">
+                ⬅️
+            </button>
+
+            📊 CALCULADORA ESCOLAR DIGITAL
+
+        </header>
+
+
+
+        <!-- CONTAINER -->
+
+        <div class="container">
+
+
+            <!-- NOME -->
+
+            <label for="nome">
+                Nome do aluno
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite o nome do aluno"
+            >
+
+
+
+            <!-- SEGMENTO -->
+
+            <label for="segmento">
+                Segmento escolar
+            </label>
+
+            <select
+                id="segmento"
+                onchange="atualizarDisciplinas()"
+            >
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="fund1">
+                    Ensino Fundamental I
+                </option>
+
+                <option value="fund2">
+                    Ensino Fundamental II
+                </option>
+
+                <option value="medio">
+                    Ensino Médio
+                </option>
+
+            </select>
+
+
+
+            <!-- DISCIPLINA -->
+
+            <label for="disciplina">
+                Disciplina
+            </label>
+
+            <select id="disciplina">
+
+                <option value="">
+                    Selecione
+                </option>
+
+            </select>
+
+
+
+            <!-- BIMESTRES -->
+
+            <label for="b1">
+                1º Bimestre
+            </label>
+
+            <input
+                type="number"
+                id="b1"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="Digite a nota"
+            >
+
+
+
+            <label for="b2">
+                2º Bimestre
+            </label>
+
+            <input
+                type="number"
+                id="b2"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="Digite a nota"
+            >
+
+
+
+            <label for="b3">
+                3º Bimestre
+            </label>
+
+            <input
+                type="number"
+                id="b3"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="Digite a nota"
+            >
+
+
+
+            <label for="b4">
+                4º Bimestre
+            </label>
+
+            <input
+                type="number"
+                id="b4"
+                min="0"
+                max="10"
+                step="0.1"
+                placeholder="Digite a nota"
+            >
+
+
+
+            <br>
+
+
+
+            <!-- BOTÕES -->
+
+            <button onclick="simularMedia()">
+                📊 Gerar Relatório
+            </button>
+
+
+
+            <button
+                id="btnPDF"
+                onclick="baixarRelatorio()"
+                disabled
+            >
+                📥 Baixar Relatório
+            </button>
+
+
+
+            <button onclick="limparCampos()">
+                🧹 Limpar
+            </button>
+
+
+
+            <!-- RESULTADO -->
+
+            <div id="resultado"></div>
+
+
+
+            <!-- BARRA -->
+
+            <div class="barra">
+
+                <div id="barra"></div>
+
+            </div>
+
+
         </div>
 
     </div>
+
+
+
+    <!-- SCRIPT -->
 
     <script src="script.js"></script>
 
