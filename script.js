@@ -80,9 +80,9 @@ function mostrarSobre() {
 
 "• Barra de desempenho\n" +
 
-"• Relatório em PDF\n" +
-
 "• Dashboard das notas\n" +
+
+"• Relatório em PDF\n" +
 
 "• Interface dinâmica por segmento escolar"
 
@@ -113,9 +113,6 @@ function limparCampos() {
 
     btnPDF.disabled = true
 
-
-    // RESET DASHBOARD
-
     atualizarDashboard()
 }
 
@@ -132,8 +129,6 @@ function atualizarCores() {
 
 
 
-    // FUNDAMENTAL I
-
     if (seg === "fund1") {
 
         header.style.background = "#2196f3"
@@ -142,8 +137,6 @@ function atualizarCores() {
     }
 
 
-
-    // FUNDAMENTAL II
 
     else if (seg === "fund2") {
 
@@ -154,8 +147,6 @@ function atualizarCores() {
 
 
 
-    // ENSINO MÉDIO
-
     else if (seg === "medio") {
 
         header.style.background = "#28a745"
@@ -164,8 +155,6 @@ function atualizarCores() {
     }
 
 
-
-    // PADRÃO
 
     else {
 
@@ -316,7 +305,8 @@ function simularMedia(mostrarAlerta = false) {
     let n4 = parseFloat(b4.value)
 
 
-    // ATUALIZA DASHBOARD
+
+    // DASHBOARD
 
     atualizarDashboard()
 
@@ -348,7 +338,7 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
-    // NÃO MOSTRA ALERTA AUTOMÁTICO
+    // SEM NOTAS
 
     if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
 
@@ -361,11 +351,13 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
+
     // MÉDIA PARCIAL
 
     let soma3 = n1 + n2 + n3
 
     let mediaParcial = soma3 / 3
+
 
 
 
@@ -433,13 +425,7 @@ function simularMedia(mostrarAlerta = false) {
 
         cor = "#22c55e"
 
-
-        // BARRA COMPLETA
-
         barra.style.width = "100%"
-
-
-        // CONFETE
 
         soltarConfete()
     }
@@ -453,9 +439,6 @@ function simularMedia(mostrarAlerta = false) {
         status = "🔴 RECUPERAÇÃO FINAL"
 
         cor = "#ef4444"
-
-
-        // BARRA PROPORCIONAL
 
         barra.style.width = (mediaFinal * 10) + "%"
     }
@@ -526,31 +509,13 @@ function baixarRelatorio() {
 
 // CÁLCULO AUTOMÁTICO
 
-b1.addEventListener("input", () => {
+b1.addEventListener("input", () => simularMedia(false))
 
-    simularMedia(false)
-})
+b2.addEventListener("input", () => simularMedia(false))
 
+b3.addEventListener("input", () => simularMedia(false))
 
-
-b2.addEventListener("input", () => {
-
-    simularMedia(false)
-})
-
-
-
-b3.addEventListener("input", () => {
-
-    simularMedia(false)
-})
-
-
-
-b4.addEventListener("input", () => {
-
-    simularMedia(false)
-})
+b4.addEventListener("input", () => simularMedia(false))
 
 
 
@@ -570,7 +535,7 @@ window.addEventListener("load", () => {
 
 
 
-// CONFETE AO APROVAR
+// CONFETE
 
 function soltarConfete() {
 
@@ -607,16 +572,24 @@ function soltarConfete() {
 
 function atualizarDashboard() {
 
-    let nota1 = parseFloat(b1.value) || 0
-    let nota2 = parseFloat(b2.value) || 0
-    let nota3 = parseFloat(b3.value) || 0
-    let nota4 = parseFloat(b4.value) || 0
-
-
     const graf1 = document.getElementById("graf1")
     const graf2 = document.getElementById("graf2")
     const graf3 = document.getElementById("graf3")
     const graf4 = document.getElementById("graf4")
+
+
+    // EVITA ERRO
+
+    if (!graf1 || !graf2 || !graf3 || !graf4) {
+
+        return
+    }
+
+
+    let nota1 = parseFloat(b1.value) || 0
+    let nota2 = parseFloat(b2.value) || 0
+    let nota3 = parseFloat(b3.value) || 0
+    let nota4 = parseFloat(b4.value) || 0
 
 
     graf1.style.height = (nota1 * 18) + "px"
