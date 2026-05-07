@@ -513,12 +513,35 @@ function limitarNota(campo) {
 
     let valor = campo.value
 
+
+    // TROCA VÍRGULA POR PONTO
+
     valor = valor.replace(",", ".")
 
-    valor = parseFloat(valor)
+
+    // REMOVE CARACTERES INVÁLIDOS
+
+    valor = valor.replace(/[^0-9.]/g, "")
 
 
-    if (isNaN(valor)) {
+    // EVITA MAIS DE UM PONTO
+
+    let partes = valor.split(".")
+
+    if (partes.length > 2) {
+
+        valor = partes[0] + "." + partes[1]
+    }
+
+
+    // CONVERTE
+
+    let numero = parseFloat(valor)
+
+
+    // SE NÃO FOR NÚMERO
+
+    if (isNaN(numero)) {
 
         campo.value = ""
 
@@ -526,21 +549,24 @@ function limitarNota(campo) {
     }
 
 
-    if (valor > 10) {
+    // LIMITE MÁXIMO
 
-        valor = 10
+    if (numero > 10) {
+
+        numero = 10
     }
 
 
-    if (valor < 0) {
+    // LIMITE MÍNIMO
 
-        valor = 0
+    if (numero < 0) {
+
+        numero = 0
     }
 
 
-    campo.value = valor
+    campo.value = numero
 }
-
 
 
 
