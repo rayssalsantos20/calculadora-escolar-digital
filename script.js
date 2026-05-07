@@ -373,7 +373,19 @@ function simularMedia(mostrarAlerta = false) {
 
             "<br><br><strong>Média parcial:</strong> " + mediaParcial.toFixed(2) +
 
-            "<br><br><strong>Precisa tirar:</strong> " + precisa.toFixed(2) + " no 4º bimestre"
+            "<br><br><strong>Situação:</strong> " +
+
+            "<span style='color:#facc15; font-size:22px; font-weight:bold'>" +
+
+            "🟡 EM ANDAMENTO" +
+
+            "</span>" +
+
+            "<br><br><strong>Precisa tirar:</strong> " +
+
+            precisa.toFixed(2) +
+
+            " no 4º bimestre"
 
 
 
@@ -392,60 +404,49 @@ function simularMedia(mostrarAlerta = false) {
 
 
 
-   let status = ""
+    let status = ""
 
-let cor = ""
-
-
-
-// APROVADO
-
-if (mediaFinal >= 6) {
-
-    status = "🟢 APROVADO"
-
-    cor = "#22c55e"
-}
+    let cor = ""
 
 
 
-// EM ANDAMENTO
+    // APROVADO
 
-else if (mediaFinal >= 4) {
+    if (mediaFinal >= 6) {
 
-    status = "🟡 EM ANDAMENTO"
+        status = "🟢 APROVADO"
 
-    cor = "#facc15"
-}
-
-
-
-// RECUPERAÇÃO
-
-else {
-
-    status = "🔴 RECUPERAÇÃO"
-
-    cor = "#ef4444"
-}
+        cor = "#22c55e"
+    }
 
 
 
-resultado.innerHTML =
+    // RECUPERAÇÃO FINAL
 
-    "<strong>Aluno:</strong> " + aluno +
+    else {
 
-    "<br><br><strong>Disciplina:</strong> " + materia +
+        status = "🔴 RECUPERAÇÃO FINAL"
 
-    "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
+        cor = "#ef4444"
+    }
 
-    "<br><br><strong>Situação:</strong> " +
 
-    "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
 
-    status +
+    resultado.innerHTML =
 
-    "</span>"
+        "<strong>Aluno:</strong> " + aluno +
+
+        "<br><br><strong>Disciplina:</strong> " + materia +
+
+        "<br><br><strong>Média final:</strong> " + mediaFinal.toFixed(2) +
+
+        "<br><br><strong>Situação:</strong> " +
+
+        "<span style='color:" + cor + "; font-size:22px; font-weight:bold'>" +
+
+        status +
+
+        "</span>"
 
 
 
@@ -504,6 +505,10 @@ b2.addEventListener("input", () => simularMedia(false))
 b3.addEventListener("input", () => simularMedia(false))
 
 b4.addEventListener("input", () => simularMedia(false))
+
+
+
+
 // TELA DE CARREGAMENTO
 
 window.addEventListener("load", () => {
