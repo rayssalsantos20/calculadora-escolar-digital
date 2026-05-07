@@ -17,10 +17,6 @@ const resultado = document.getElementById("resultado")
 const barra = document.getElementById("barra")
 
 const btnPDF = document.getElementById("btnPDF")
-let relatorioGerado = false
-
-
-// CONTROLE PDF
 
 let relatorioGerado = false
 
@@ -117,7 +113,11 @@ function limparCampos() {
 
     barra.style.width = "0%"
 
-    btnPDF.disabled = true
+    btnPDF.setAttribute("disabled", true)
+
+    btnPDF.style.opacity = "0.5"
+
+    btnPDF.style.cursor = "not-allowed"
 
     relatorioGerado = false
 
@@ -289,13 +289,6 @@ function atualizarDisciplinas() {
 
 function simularMedia(mostrarAlerta = false) {
 
-    // SÓ LIBERA PDF AO CLICAR EM GERAR RELATÓRIO
-
-    if (mostrarAlerta) {
-
-        relatorioGerado = true
-    }
-
     let aluno = nome.value.trim()
 
     let materia = disciplina.value
@@ -391,8 +384,6 @@ function simularMedia(mostrarAlerta = false) {
 
         barra.style.width = (mediaParcial * 10) + "%"
 
-        btnPDF.disabled = false
-
         return
     }
 
@@ -452,9 +443,24 @@ function simularMedia(mostrarAlerta = false) {
         status +
 
         "</span>"
+}
 
 
-    btnPDF.disabled = false
+
+
+// GERAR RELATÓRIO
+
+function gerarRelatorio() {
+
+    simularMedia(true)
+
+    relatorioGerado = true
+
+    btnPDF.removeAttribute("disabled")
+
+    btnPDF.style.opacity = "1"
+
+    btnPDF.style.cursor = "pointer"
 }
 
 
@@ -463,8 +469,6 @@ function simularMedia(mostrarAlerta = false) {
 // PDF PREMIUM
 
 function baixarRelatorio() {
-
-    // VERIFICA SE GEROU RELATÓRIO
 
     if (!relatorioGerado) {
 
@@ -490,8 +494,6 @@ function baixarRelatorio() {
     let doc = new jsPDF()
 
 
-    // TÍTULO
-
     doc.setFontSize(20)
 
     doc.setTextColor(37, 99, 235)
@@ -499,14 +501,10 @@ function baixarRelatorio() {
     doc.text("RELATÓRIO ESCOLAR DIGITAL", 20, 20)
 
 
-    // LINHA
-
     doc.setDrawColor(37, 99, 235)
 
     doc.line(20, 25, 190, 25)
 
-
-    // TEXTO
 
     doc.setFontSize(12)
 
@@ -517,16 +515,12 @@ function baixarRelatorio() {
     doc.text(texto, 20, 45)
 
 
-    // DATA
-
     let data = new Date().toLocaleDateString("pt-BR")
 
     doc.setFontSize(10)
 
     doc.text("Gerado em: " + data, 20, 270)
 
-
-    // SALVAR
 
     doc.save("relatorio-" + aluno + ".pdf")
 }
@@ -718,20 +712,7 @@ function atualizarDashboard() {
     graf4.style.height = (nota4 * 18) + "px"
 }
 
-// GERAR RELATÓRIO
 
-function gerarRelatorio() {
-
-    simularMedia(true)
-
-    relatorioGerado = true
-
-    btnPDF.removeAttribute("disabled")
-
-    btnPDF.style.opacity = "1"
-
-    btnPDF.style.cursor = "pointer"
-}
 
 
 // TEMA ESCURO
