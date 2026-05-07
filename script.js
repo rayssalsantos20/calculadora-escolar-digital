@@ -630,3 +630,33 @@ function alternarTema() {
         botao.innerHTML = "🌙"
     }
 }
+// LIMITAR NOTAS ENTRE 0 E 10
+
+function limitarNota(campo) {
+
+    let valor = parseFloat(campo.value)
+
+    
+    if (valor > 10) {
+
+        campo.value = 10
+    }
+
+
+    if (valor < 0) {
+
+        campo.value = 0
+    }
+}
+
+
+
+// APLICAR NOS CAMPOS
+
+b1.addEventListener("input", () => limitarNota(b1))
+
+b2.addEventListener("input", () => limitarNota(b2))
+
+b3.addEventListener("input", () => limitarNota(b3))
+
+b4.addEventListener("input", () => limitarNota(b4))
