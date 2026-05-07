@@ -524,13 +524,23 @@ function limitarNota(campo) {
     valor = valor.replace(/[^0-9.]/g, "")
 
 
-    // EVITA MAIS DE UM PONTO
+    // PERMITE APENAS UM PONTO
 
-    let partes = valor.split(".")
+    const partes = valor.split(".")
 
     if (partes.length > 2) {
 
         valor = partes[0] + "." + partes[1]
+    }
+
+
+    // NÃO BLOQUEIA ENQUANTO DIGITA O PONTO
+
+    if (valor.endsWith(".")) {
+
+        campo.value = valor
+
+        return
     }
 
 
@@ -567,7 +577,6 @@ function limitarNota(campo) {
 
     campo.value = numero
 }
-
 
 
 // CÁLCULO AUTOMÁTICO
