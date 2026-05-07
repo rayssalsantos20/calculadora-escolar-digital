@@ -610,3 +610,23 @@ function atualizarDashboard() {
 
     graf4.style.height = (nota4 * 18) + "px"
 }
+// TEMA ESCURO
+
+function alternarTema() {
+
+    document.body.classList.toggle("dark")
+
+
+    let botao = document.querySelector(".btnTema")
+
+
+    if(document.body.classList.contains("dark")){
+
+        botao.innerHTML = "☀️"
+    }
+
+    else{
+
+        botao.innerHTML = "🌙"
+    }
+}
