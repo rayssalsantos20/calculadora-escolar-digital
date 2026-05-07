@@ -569,3 +569,20 @@ function soltarConfete() {
         }, 5000)
     }
 }
+// DASHBOARD
+
+function atualizarDashboard(n1, n2, n3, n4) {
+
+    document.getElementById("graf1").style.height = (n1 * 18) + "px"
+
+    document.getElementById("graf2").style.height = (n2 * 18) + "px"
+
+    document.getElementById("graf3").style.height = (n3 * 18) + "px"
+
+    
+    if (!isNaN(n4)) {
+
+        document.getElementById("graf4").style.height =
+            (n4 * 18) + "px"
+    }
+}
