@@ -1654,3 +1654,78 @@ box-shadow:
 0 5px 25px rgba(37,99,235,0.4);
 
 }
+/* MENU PREMIUM */
+background:rgba(255,255,255,0.2);
+
+border-radius:30px;
+
+overflow:hidden;
+
+}
+
+
+
+.loadingProgressPremium{
+
+width:0%;
+
+height:100%;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+90deg,
+#ffffff,
+#dbeafe,
+#93c5fd
+);
+
+animation:carregarPremium 2.5s linear forwards;
+
+}
+
+
+
+@keyframes carregarPremium{
+
+from{
+
+width:0%;
+
+}
+
+
+to{
+
+width:100%;
+
+}
+
+}
+
+
+
+/* DARK MENU */
+
+body.dark .menuPremium{
+
+background:#1e293b;
+
+}
+
+
+
+body.dark .menuPremium h2{
+
+color:white;
+
+}
+
+
+
+body.dark .textoMenuPremium{
+
+color:#cbd5e1;
+
+}
