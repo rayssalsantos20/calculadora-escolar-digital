@@ -9,7 +9,31 @@
     <title>Calculadora Escolar Digital</title>
 
     <link rel="stylesheet" href="style.css">
+<!-- LOADING PREMIUM -->
 
+<div id="loadingSistema" style="display:none;">
+
+    <div class="loaderCardPremium">
+
+        <img src="logo.png" class="logoSplash">
+
+        <h2 class="tituloSplash">
+            Calculadora Escolar Digital
+        </h2>
+
+        <p class="textoSplash">
+            Carregando sistema...
+        </p>
+
+        <div class="loadingBarPremium">
+
+            <div class="loadingProgressPremium"></div>
+
+        </div>
+
+    </div>
+
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
@@ -17,20 +41,49 @@
 <body>
 
 
-<!-- MENU INICIAL -->
+<!-- MENU PREMIUM -->
 
-<div id="menuInicial" class="menu">
+<div id="menuInicial" class="menuPremium">
 
-    <img src="logo.png" class="logoMenu">
+    <div class="topoMenu">
 
-    <h2>Calculadora Escolar Digital</h2>
+        <img src="logo.png" class="logoTopo">
 
-    <button onclick="abrirCalculadora()">
-        Nova média
+        <div>
+
+            <h1>CED</h1>
+
+            <p>Calculadora Escolar Digital</p>
+
+        </div>
+
+    </div>
+
+
+
+    <img src="logo.png" class="imagemPrincipal">
+
+
+
+    <h2>
+        Controle escolar inteligente
+    </h2>
+
+    <span class="textoMenuPremium">
+        Calcule e acompanhe o desempenho escolar
+        de forma prática e organizada.
+    </span>
+
+
+
+    <button onclick="abrirCalculadora()" class="btnPremium">
+        📈 Nova média
     </button>
 
-    <button onclick="mostrarSobre()">
-        Sobre o aplicativo
+
+
+    <button onclick="mostrarSobre()" class="btnPremium azul">
+        ℹ️ Sobre o aplicativo
     </button>
 
 </div>
